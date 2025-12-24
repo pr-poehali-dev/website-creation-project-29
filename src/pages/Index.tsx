@@ -253,30 +253,30 @@ const Index = () => {
         </div>
       )}
 
-      <section className="py-16 bg-gradient-to-r from-card via-background to-card">
-        <div className="container mx-auto px-6">
-          <div className="text-center mb-8">
-            <h2 className="text-3xl font-bold text-foreground mb-2">🎄 Наши партнеры</h2>
-            <p className="text-muted-foreground">Часть глобальной авиационной семьи</p>
+      <section className="py-8 md:py-16 bg-gradient-to-r from-card via-background to-card">
+        <div className="container mx-auto px-4 md:px-6">
+          <div className="text-center mb-6 md:mb-8">
+            <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-2">🎄 Наши партнеры</h2>
+            <p className="text-sm md:text-base text-muted-foreground">Часть глобальной авиационной семьи</p>
           </div>
-          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+          <div className="grid sm:grid-cols-2 gap-4 md:gap-8 max-w-4xl mx-auto">
             <a
               href="https://www.aeroflot.ru"
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-card border border-border rounded-xl p-8 hover:border-primary transition-all duration-300 group"
+              className="bg-card border border-border rounded-lg md:rounded-xl p-4 md:p-8 hover:border-primary transition-all duration-300 group"
             >
-              <div className="flex flex-col items-center gap-4">
+              <div className="flex flex-col items-center gap-3 md:gap-4">
                 <img
                   src="https://cdn.poehali.dev/projects/fa174cc1-5b97-4175-973a-f9bea28b014a/files/20be7446-c125-49bd-a833-0a15236c932a.jpg"
                   alt="Аэрофлот"
                   loading="lazy"
                   decoding="async"
-                  className="h-20 object-contain group-hover:scale-110 transition-transform"
+                  className="h-14 md:h-20 object-contain group-hover:scale-110 transition-transform"
                 />
                 <div className="text-center">
-                  <h3 className="text-xl font-semibold text-foreground mb-2">Аэрофлот</h3>
-                  <p className="text-sm text-muted-foreground">Материнская компания</p>
+                  <h3 className="text-lg md:text-xl font-semibold text-foreground mb-1 md:mb-2">Аэрофлот</h3>
+                  <p className="text-xs md:text-sm text-muted-foreground">Материнская компания</p>
                 </div>
               </div>
             </a>
@@ -284,19 +284,19 @@ const Index = () => {
               href="https://www.skyteam.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-card border border-border rounded-xl p-8 hover:border-primary transition-all duration-300 group"
+              className="bg-card border border-border rounded-lg md:rounded-xl p-4 md:p-8 hover:border-primary transition-all duration-300 group"
             >
-              <div className="flex flex-col items-center gap-4">
+              <div className="flex flex-col items-center gap-3 md:gap-4">
                 <img
                   src="https://cdn.poehali.dev/projects/fa174cc1-5b97-4175-973a-f9bea28b014a/files/71a6bd82-e528-4773-aca3-774692a26fce.jpg"
                   alt="SkyTeam"
                   loading="lazy"
                   decoding="async"
-                  className="h-20 object-contain group-hover:scale-110 transition-transform"
+                  className="h-14 md:h-20 object-contain group-hover:scale-110 transition-transform"
                 />
                 <div className="text-center">
-                  <h3 className="text-xl font-semibold text-foreground mb-2">SkyTeam</h3>
-                  <p className="text-sm text-muted-foreground">Глобальный авиационный альянс</p>
+                  <h3 className="text-lg md:text-xl font-semibold text-foreground mb-1 md:mb-2">SkyTeam</h3>
+                  <p className="text-xs md:text-sm text-muted-foreground">Глобальный авиационный альянс</p>
                 </div>
               </div>
             </a>
@@ -304,44 +304,44 @@ const Index = () => {
         </div>
       </section>
 
-      <footer className="bg-card border-t border-border py-12">
-        <div className="container mx-auto px-6">
-          <div className="grid md:grid-cols-3 gap-8">
+      <footer className="bg-card border-t border-border py-8 md:py-12">
+        <div className="container mx-auto px-4 md:px-6">
+          <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-8">
             <div>
-              <div className="flex items-center gap-2 mb-4">
-                <Icon name="Plane" className="text-primary" size={24} />
-                <span className="text-xl font-bold text-foreground">Leviks Air</span>
+              <div className="flex items-center gap-2 mb-3 md:mb-4">
+                <Icon name="Plane" className="text-primary" size={20} />
+                <span className="text-lg md:text-xl font-bold text-foreground">Leviks Air</span>
               </div>
-              <p className="text-muted-foreground text-sm mb-3">
+              <p className="text-muted-foreground text-xs md:text-sm mb-2 md:mb-3">
                 Авиакомпания нового поколения, соединяющая технологии и комфорт
               </p>
-              <p className="text-xs text-muted-foreground">
+              <p className="text-[10px] md:text-xs text-muted-foreground">
                 Дочерняя компания Аэрофлот | Член альянса SkyTeam
               </p>
             </div>
             <div>
-              <h3 className="font-semibold text-foreground mb-4">Контакты</h3>
-              <div className="space-y-2 text-sm text-muted-foreground">
+              <h3 className="font-semibold text-foreground mb-3 md:mb-4 text-sm md:text-base">Контакты</h3>
+              <div className="space-y-2 text-xs md:text-sm text-muted-foreground">
                 <p className="flex items-center gap-2">
-                  <Icon name="Phone" size={16} />
+                  <Icon name="Phone" size={14} />
                   +7 (800) 123-45-67
                 </p>
                 <p className="flex items-center gap-2">
-                  <Icon name="Mail" size={16} />
+                  <Icon name="Mail" size={14} />
                   info@leviksair.com
                 </p>
               </div>
             </div>
-            <div>
-              <h3 className="font-semibold text-foreground mb-4">Следите за нами</h3>
-              <div className="flex gap-4">
-                <Icon name="Facebook" size={20} className="text-muted-foreground hover:text-primary cursor-pointer transition-colors" />
-                <Icon name="Twitter" size={20} className="text-muted-foreground hover:text-primary cursor-pointer transition-colors" />
-                <Icon name="Instagram" size={20} className="text-muted-foreground hover:text-primary cursor-pointer transition-colors" />
+            <div className="sm:col-span-2 md:col-span-1">
+              <h3 className="font-semibold text-foreground mb-3 md:mb-4 text-sm md:text-base">Следите за нами</h3>
+              <div className="flex gap-3 md:gap-4">
+                <Icon name="Facebook" size={18} className="text-muted-foreground hover:text-primary cursor-pointer transition-colors" />
+                <Icon name="Twitter" size={18} className="text-muted-foreground hover:text-primary cursor-pointer transition-colors" />
+                <Icon name="Instagram" size={18} className="text-muted-foreground hover:text-primary cursor-pointer transition-colors" />
               </div>
             </div>
           </div>
-          <div className="border-t border-border mt-8 pt-8 text-center text-sm text-muted-foreground">
+          <div className="border-t border-border mt-6 md:mt-8 pt-6 md:pt-8 text-center text-xs md:text-sm text-muted-foreground">
             © 2024 Leviks Air. Все права защищены.
           </div>
         </div>

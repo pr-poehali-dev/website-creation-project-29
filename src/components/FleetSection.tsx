@@ -34,20 +34,20 @@ const FleetSection = () => {
   ];
 
   return (
-    <section id="fleet" className="py-24 bg-background">
-      <div className="container mx-auto px-6">
-        <div className="text-center mb-16">
-          <h2 className="text-5xl font-bold text-foreground mb-4 bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary">
+    <section id="fleet" className="py-12 md:py-24 bg-background">
+      <div className="container mx-auto px-4 md:px-6">
+        <div className="text-center mb-8 md:mb-16">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-3 md:mb-4 bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary">
             🎁 Наш Флот
           </h2>
-          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+          <p className="text-muted-foreground text-sm md:text-lg max-w-2xl mx-auto px-4">
             Современные воздушные суда с передовыми технологиями и максимальным комфортом
           </p>
         </div>
-        <div className="grid md:grid-cols-2 gap-8">
+        <div className="grid sm:grid-cols-2 gap-4 md:gap-8">
           {fleet.map((aircraft, index) => (
             <Card key={index} className="bg-card border-border overflow-hidden group hover:border-primary transition-all duration-300">
-              <div className="relative h-64 overflow-hidden">
+              <div className="relative h-48 md:h-64 overflow-hidden">
                 <img
                   src={aircraft.image}
                   alt={aircraft.name}
@@ -56,24 +56,24 @@ const FleetSection = () => {
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-card/90 to-transparent"></div>
-                <h3 className="absolute bottom-4 left-4 text-2xl font-bold text-foreground">{aircraft.name}</h3>
+                <h3 className="absolute bottom-3 left-3 md:bottom-4 md:left-4 text-xl md:text-2xl font-bold text-foreground">{aircraft.name}</h3>
               </div>
-              <CardContent className="p-6">
-                <div className="grid grid-cols-3 gap-4">
+              <CardContent className="p-4 md:p-6">
+                <div className="grid grid-cols-3 gap-2 md:gap-4">
                   <div className="text-center">
-                    <Icon name="Users" className="text-primary mx-auto mb-2" size={24} />
-                    <p className="text-sm text-muted-foreground">Пассажиров</p>
-                    <p className="text-lg font-semibold text-foreground">{aircraft.passengers}</p>
+                    <Icon name="Users" className="text-primary mx-auto mb-1 md:mb-2" size={20} />
+                    <p className="text-xs md:text-sm text-muted-foreground">Пассажиров</p>
+                    <p className="text-sm md:text-lg font-semibold text-foreground">{aircraft.passengers}</p>
                   </div>
                   <div className="text-center">
-                    <Icon name="Gauge" className="text-primary mx-auto mb-2" size={24} />
-                    <p className="text-sm text-muted-foreground">Скорость</p>
-                    <p className="text-lg font-semibold text-foreground">{aircraft.speed}</p>
+                    <Icon name="Gauge" className="text-primary mx-auto mb-1 md:mb-2" size={20} />
+                    <p className="text-xs md:text-sm text-muted-foreground">Скорость</p>
+                    <p className="text-sm md:text-lg font-semibold text-foreground">{aircraft.speed}</p>
                   </div>
                   <div className="text-center">
-                    <Icon name="Navigation" className="text-primary mx-auto mb-2" size={24} />
-                    <p className="text-sm text-muted-foreground">Дальность</p>
-                    <p className="text-lg font-semibold text-foreground">{aircraft.range}</p>
+                    <Icon name="Navigation" className="text-primary mx-auto mb-1 md:mb-2" size={20} />
+                    <p className="text-xs md:text-sm text-muted-foreground">Дальность</p>
+                    <p className="text-sm md:text-lg font-semibold text-foreground">{aircraft.range}</p>
                   </div>
                 </div>
               </CardContent>

@@ -112,27 +112,27 @@ const BackgroundMusic = () => {
   }, [currentMode]);
 
   return (
-    <div className="fixed bottom-4 left-4 z-50">
+    <div className="fixed bottom-2 left-2 md:bottom-4 md:left-4 z-50">
       {currentMode === 'countdown' && (
-        <div className="mb-2 bg-gradient-to-r from-yellow-600 to-red-600 text-white px-4 py-2 rounded-full shadow-lg animate-pulse">
-          <p className="text-sm font-bold">⏰ До Нового Года: {countdownTime}</p>
+        <div className="mb-2 bg-gradient-to-r from-yellow-600 to-red-600 text-white px-3 md:px-4 py-1.5 md:py-2 rounded-full shadow-lg animate-pulse">
+          <p className="text-xs md:text-sm font-bold">⏰ До Нового Года: {countdownTime}</p>
         </div>
       )}
       
-      <div className="bg-card border border-border rounded-xl p-4 shadow-lg backdrop-blur-sm">
-        <div className="flex items-center gap-3 mb-3">
-          <Icon name="Music" className="text-primary" size={20} />
-          <span className="text-sm font-semibold text-foreground">
-            {currentMode === 'countdown' ? '🎆 Обратный отсчёт!' : currentMode === 'celebration' ? '🎉 С Новым Годом!' : '🎄 Новогодняя музыка'}
+      <div className="bg-card border border-border rounded-lg md:rounded-xl p-3 md:p-4 shadow-lg backdrop-blur-sm max-w-[200px] md:max-w-none">
+        <div className="flex items-center gap-2 md:gap-3 mb-2 md:mb-3">
+          <Icon name="Music" className="text-primary" size={16} />
+          <span className="text-xs md:text-sm font-semibold text-foreground truncate">
+            {currentMode === 'countdown' ? '🎆 Отсчёт!' : currentMode === 'celebration' ? '🎉 Новый Год!' : '🎄 Музыка'}
           </span>
         </div>
         
-        <div className="flex items-center gap-2 mb-2">
+        <div className="flex items-center gap-1 md:gap-2">
           <button
             onClick={() => setIsMuted(!isMuted)}
-            className="p-2 hover:bg-muted rounded-lg transition-colors"
+            className="p-1.5 md:p-2 hover:bg-muted rounded-lg transition-colors"
           >
-            <Icon name={isMuted ? "VolumeX" : "Volume2"} size={20} className="text-muted-foreground" />
+            <Icon name={isMuted ? "VolumeX" : "Volume2"} size={16} className="text-muted-foreground" />
           </button>
           
           <input
@@ -141,13 +141,13 @@ const BackgroundMusic = () => {
             max="100"
             value={volume * 100}
             onChange={(e) => setVolume(Number(e.target.value) / 100)}
-            className="flex-1 h-2 bg-muted rounded-lg appearance-none cursor-pointer"
+            className="flex-1 h-1.5 md:h-2 bg-muted rounded-lg appearance-none cursor-pointer"
             style={{
               background: `linear-gradient(to right, hsl(var(--primary)) 0%, hsl(var(--primary)) ${volume * 100}%, hsl(var(--muted)) ${volume * 100}%, hsl(var(--muted)) 100%)`
             }}
           />
           
-          <span className="text-xs text-muted-foreground w-8">{Math.round(volume * 100)}%</span>
+          <span className="text-[10px] md:text-xs text-muted-foreground w-6 md:w-8">{Math.round(volume * 100)}%</span>
         </div>
       </div>
     </div>
