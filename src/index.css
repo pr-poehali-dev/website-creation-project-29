@@ -104,4 +104,49 @@
   .animate-fall {
     animation: fall linear infinite;
   }
+
+  @keyframes snowman-walk {
+    0% {
+      left: -100px;
+      top: 20%;
+    }
+    100% {
+      left: 100%;
+      top: 30%;
+    }
+  }
+
+  @keyframes snowman-walk-reverse {
+    0% {
+      right: -100px;
+      top: 60%;
+    }
+    100% {
+      right: 100%;
+      top: 50%;
+    }
+  }
+
+  @keyframes snowman-walk-slow {
+    0% {
+      left: -100px;
+      top: 80%;
+    }
+    100% {
+      left: 100%;
+      top: 75%;
+    }
+  }
+
+  .snowman-walk-1 {
+    animation: snowman-walk 15s linear infinite;
+  }
+
+  .snowman-walk-2 {
+    animation: snowman-walk-reverse 18s linear infinite;
+  }
+
+  .snowman-walk-3 {
+    animation: snowman-walk-slow 22s linear infinite;
+  }
 }

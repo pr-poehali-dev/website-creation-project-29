@@ -5,9 +5,10 @@ import Icon from '@/components/ui/icon';
 
 interface SecretGameProps {
   onClose: () => void;
+  onWin: () => void;
 }
 
-const SecretGame = ({ onClose }: SecretGameProps) => {
+const SecretGame = ({ onClose, onWin }: SecretGameProps) => {
   const [numbers, setNumbers] = useState<number[]>([]);
   const [shuffled, setShuffled] = useState<number[]>([]);
   const [selected, setSelected] = useState<number[]>([]);
@@ -29,6 +30,7 @@ const SecretGame = ({ onClose }: SecretGameProps) => {
       const isCorrect = newSelected.every((val, idx) => val === idx + 1);
       if (isCorrect) {
         setIsWon(true);
+        onWin();
       } else {
         setTimeout(() => {
           setSelected([]);

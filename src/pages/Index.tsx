@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import Icon from '@/components/ui/icon';
 import FleetSection from '@/components/FleetSection';
@@ -11,6 +11,17 @@ const Index = () => {
   const [activeSection, setActiveSection] = useState('home');
   const [planeClicks, setPlaneClicks] = useState(0);
   const [showSecretGame, setShowSecretGame] = useState(false);
+  const [snowmenUnlocked, setSnowmenUnlocked] = useState(false);
+
+  useEffect(() => {
+    const unlocked = localStorage.getItem('snowmenUnlocked') === 'true';
+    setSnowmenUnlocked(unlocked);
+  }, []);
+
+  const handleGameWin = () => {
+    localStorage.setItem('snowmenUnlocked', 'true');
+    setSnowmenUnlocked(true);
+  };
 
   const scrollToSection = (section: string) => {
     setActiveSection(section);
@@ -122,7 +133,15 @@ const Index = () => {
       <FleetSection />
       <HistorySection />
 
-      {showSecretGame && <SecretGame onClose={() => setShowSecretGame(false)} />}
+      {showSecretGame && <SecretGame onClose={() => setShowSecretGame(false)} onWin={handleGameWin} />}
+
+      {snowmenUnlocked && (
+        <div className="fixed inset-0 pointer-events-none z-40 overflow-hidden">
+          <div className="snowman-walk-1 absolute text-6xl">⛄</div>
+          <div className="snowman-walk-2 absolute text-6xl">⛄</div>
+          <div className="snowman-walk-3 absolute text-5xl">⛄</div>
+        </div>
+      )}
 
       <section className="py-16 bg-gradient-to-r from-card via-background to-card">
         <div className="container mx-auto px-6">
