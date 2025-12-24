@@ -29,15 +29,16 @@ const BackgroundMusic = () => {
     bellsRef.current = bells;
 
     const attemptPlay = () => {
-      const playPromise = christmasMusic.play();
-      if (playPromise !== undefined) {
-        playPromise.catch(() => {
-          console.log('Автовоспроизведение заблокировано. Нажмите на страницу для запуска музыки.');
-        });
-      }
+      christmasMusic.play().catch(() => {});
     };
 
-    christmasMusic.addEventListener('canplaythrough', attemptPlay, { once: true });
+    christmasMusic.addEventListener('loadeddata', attemptPlay, { once: true });
+    
+    attemptPlay();
+    
+    setTimeout(attemptPlay, 100);
+    setTimeout(attemptPlay, 500);
+    setTimeout(attemptPlay, 1000);
 
     const handleInteraction = () => {
       if (christmasMusic.paused) {
@@ -45,14 +46,9 @@ const BackgroundMusic = () => {
       }
     };
 
-    document.addEventListener('click', handleInteraction, { once: true });
-    document.addEventListener('touchstart', handleInteraction, { once: true });
-
-    setTimeout(() => {
-      if (christmasMusic.paused) {
-        attemptPlay();
-      }
-    }, 1000);
+    ['click', 'touchstart', 'keydown', 'scroll', 'mousemove'].forEach(event => {
+      document.addEventListener(event, handleInteraction, { once: true });
+    });
 
     return () => {
       christmasMusic.pause();
