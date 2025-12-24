@@ -67,13 +67,13 @@ const Index = () => {
       <Snowfall />
       
       <div className="fixed top-0 w-full z-[51] bg-gradient-to-r from-red-600 via-blue-600 to-red-600 py-2">
-        <div className="container mx-auto px-6 flex items-center justify-center gap-4">
+        <div className="container mx-auto px-6 flex items-center justify-center gap-3 flex-wrap">
           <span className="text-white text-sm font-medium">🎄 Купить билеты:</span>
           <Button
             size="sm"
             variant="secondary"
             onClick={() => window.open('https://www.aeroflot.ru', '_blank')}
-            className="bg-white/90 hover:bg-white text-red-600 font-semibold"
+            className="bg-white/90 hover:bg-white text-red-600 font-semibold text-xs"
           >
             ✈️ Аэрофлот
           </Button>
@@ -81,7 +81,7 @@ const Index = () => {
             size="sm"
             variant="secondary"
             onClick={() => window.open('https://www.rossiya-airlines.com', '_blank')}
-            className="bg-white/90 hover:bg-white text-blue-600 font-semibold"
+            className="bg-white/90 hover:bg-white text-blue-600 font-semibold text-xs"
           >
             ✈️ Россия
           </Button>
@@ -89,9 +89,25 @@ const Index = () => {
             size="sm"
             variant="secondary"
             onClick={() => window.open('https://www.pobeda.aero', '_blank')}
-            className="bg-white/90 hover:bg-white text-green-600 font-semibold"
+            className="bg-white/90 hover:bg-white text-green-600 font-semibold text-xs"
           >
             ✈️ Победа
+          </Button>
+          <Button
+            size="sm"
+            variant="secondary"
+            onClick={() => window.open('https://www.utair.ru', '_blank')}
+            className="bg-white/90 hover:bg-white text-orange-600 font-semibold text-xs"
+          >
+            ✈️ UTair
+          </Button>
+          <Button
+            size="sm"
+            variant="secondary"
+            onClick={() => window.open('https://www.yamal.aero', '_blank')}
+            className="bg-white/90 hover:bg-white text-purple-600 font-semibold text-xs"
+          >
+            ✈️ Ямал
           </Button>
         </div>
       </div>
