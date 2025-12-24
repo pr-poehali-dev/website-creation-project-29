@@ -7,6 +7,7 @@ import Snowfall from '@/components/Snowfall';
 import RoutesSection from '@/components/RoutesSection';
 import SecretGame from '@/components/SecretGame';
 import NewYearMagic from '@/components/NewYearMagic';
+import BackgroundMusic from '@/components/BackgroundMusic';
 
 const Index = () => {
   const [activeSection, setActiveSection] = useState('home');
@@ -32,6 +33,7 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <BackgroundMusic />
       <NewYearMagic />
       <Snowfall />
       <nav className="fixed top-0 w-full z-50 bg-background/80 backdrop-blur-md border-b border-border">
