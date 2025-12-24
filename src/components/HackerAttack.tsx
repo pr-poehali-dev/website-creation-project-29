@@ -23,7 +23,7 @@ const HackerAttack = () => {
   useEffect(() => {
     const checkTime = () => {
       const now = new Date();
-      const attackStart = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 17, 14, 0);
+      const attackStart = new Date(now.getTime() - 1000);
       const attackEnd = new Date(attackStart.getTime() + 5 * 60 * 1000);
 
       if (now >= attackStart && now < attackEnd) {
