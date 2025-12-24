@@ -11,7 +11,7 @@ const BackgroundMusic = () => {
   const [countdownTime, setCountdownTime] = useState('');
 
   useEffect(() => {
-    const christmasMusic = new Audio('https://cdn.pixabay.com/download/audio/2021/11/27/audio_0d04937c90.mp3');
+    const christmasMusic = new Audio('https://cdn.pixabay.com/download/audio/2022/02/22/audio_d1718ab41b.mp3');
     christmasMusic.loop = true;
     christmasMusic.volume = volume;
     christmasMusic.preload = 'auto';
