@@ -65,7 +65,38 @@ const Index = () => {
       <BackgroundMusic />
       <NewYearMagic />
       <Snowfall />
-      <nav className="fixed top-0 w-full z-50 bg-background/80 backdrop-blur-md border-b border-border">
+      
+      <div className="fixed top-0 w-full z-[51] bg-gradient-to-r from-red-600 via-blue-600 to-red-600 py-2">
+        <div className="container mx-auto px-6 flex items-center justify-center gap-4">
+          <span className="text-white text-sm font-medium">🎄 Купить билеты:</span>
+          <Button
+            size="sm"
+            variant="secondary"
+            onClick={() => window.open('https://www.aeroflot.ru', '_blank')}
+            className="bg-white/90 hover:bg-white text-red-600 font-semibold"
+          >
+            ✈️ Аэрофлот
+          </Button>
+          <Button
+            size="sm"
+            variant="secondary"
+            onClick={() => window.open('https://www.rossiya-airlines.com', '_blank')}
+            className="bg-white/90 hover:bg-white text-blue-600 font-semibold"
+          >
+            ✈️ Россия
+          </Button>
+          <Button
+            size="sm"
+            variant="secondary"
+            onClick={() => window.open('https://www.pobeda.aero', '_blank')}
+            className="bg-white/90 hover:bg-white text-green-600 font-semibold"
+          >
+            ✈️ Победа
+          </Button>
+        </div>
+      </div>
+
+      <nav className="fixed top-[52px] w-full z-50 bg-background/80 backdrop-blur-md border-b border-border">
         <div className="container mx-auto px-6 py-4 flex items-center justify-between">
           <div className="flex items-center gap-3">
             <Icon name="Plane" className="text-primary" size={32} />
@@ -134,7 +165,7 @@ const Index = () => {
         </div>
       </nav>
 
-      <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden pt-16">
+      <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden pt-[116px]">
         <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-background to-secondary/20"></div>
         <div className="absolute inset-0">
           <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/10 rounded-full blur-3xl animate-pulse"></div>
