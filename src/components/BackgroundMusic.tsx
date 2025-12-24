@@ -14,7 +14,7 @@ const BackgroundMusic = () => {
     const christmasMusic = new Audio('https://cdn.pixabay.com/download/audio/2021/11/27/audio_0d04937c90.mp3');
     christmasMusic.loop = true;
     christmasMusic.volume = volume;
-    christmasMusic.preload = 'metadata';
+    christmasMusic.preload = 'auto';
     christmasMusicRef.current = christmasMusic;
 
     const countdownMusic = new Audio('https://cdn.pixabay.com/download/audio/2021/11/26/audio_234b6b6e54.mp3');
@@ -28,14 +28,31 @@ const BackgroundMusic = () => {
     bells.preload = 'none';
     bellsRef.current = bells;
 
-    const playPromise = christmasMusic.play();
-    if (playPromise !== undefined) {
-      playPromise.catch(() => {
-        document.addEventListener('click', () => {
-          christmasMusic.play().catch(() => {});
-        }, { once: true });
-      });
-    }
+    const attemptPlay = () => {
+      const playPromise = christmasMusic.play();
+      if (playPromise !== undefined) {
+        playPromise.catch(() => {
+          console.log('Автовоспроизведение заблокировано. Нажмите на страницу для запуска музыки.');
+        });
+      }
+    };
+
+    christmasMusic.addEventListener('canplaythrough', attemptPlay, { once: true });
+
+    const handleInteraction = () => {
+      if (christmasMusic.paused) {
+        christmasMusic.play().catch(() => {});
+      }
+    };
+
+    document.addEventListener('click', handleInteraction, { once: true });
+    document.addEventListener('touchstart', handleInteraction, { once: true });
+
+    setTimeout(() => {
+      if (christmasMusic.paused) {
+        attemptPlay();
+      }
+    }, 1000);
 
     return () => {
       christmasMusic.pause();
@@ -45,7 +62,7 @@ const BackgroundMusic = () => {
       countdownMusicRef.current = null;
       bellsRef.current = null;
     };
-  }, []);
+  }, [volume]);
 
   useEffect(() => {
     if (christmasMusicRef.current) christmasMusicRef.current.volume = isMuted ? 0 : volume;
