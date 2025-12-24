@@ -66,14 +66,14 @@ const Index = () => {
       <NewYearMagic />
       <Snowfall />
       
-      <div className="fixed top-0 w-full z-[51] bg-gradient-to-r from-red-600 via-blue-600 to-red-600 py-2">
-        <div className="container mx-auto px-6 flex items-center justify-center gap-3 flex-wrap">
-          <span className="text-white text-sm font-medium">🎄 Купить билеты:</span>
+      <div className="fixed top-0 w-full z-[51] bg-gradient-to-r from-red-600 via-blue-600 to-red-600 py-2 md:py-2">
+        <div className="container mx-auto px-3 md:px-6 flex items-center justify-center gap-2 md:gap-3 flex-wrap">
+          <span className="text-white text-xs md:text-sm font-medium hidden sm:inline">🎄 Купить билеты:</span>
           <Button
             size="sm"
             variant="secondary"
             onClick={() => window.open('https://www.aeroflot.ru', '_blank')}
-            className="bg-white/90 hover:bg-white text-red-600 font-semibold text-xs"
+            className="bg-white/90 hover:bg-white text-red-600 font-semibold text-[10px] md:text-xs px-2 md:px-3 py-1 h-auto"
           >
             ✈️ Аэрофлот
           </Button>
@@ -81,7 +81,7 @@ const Index = () => {
             size="sm"
             variant="secondary"
             onClick={() => window.open('https://www.rossiya-airlines.com', '_blank')}
-            className="bg-white/90 hover:bg-white text-blue-600 font-semibold text-xs"
+            className="bg-white/90 hover:bg-white text-blue-600 font-semibold text-[10px] md:text-xs px-2 md:px-3 py-1 h-auto"
           >
             ✈️ Россия
           </Button>
@@ -89,7 +89,7 @@ const Index = () => {
             size="sm"
             variant="secondary"
             onClick={() => window.open('https://www.pobeda.aero', '_blank')}
-            className="bg-white/90 hover:bg-white text-green-600 font-semibold text-xs"
+            className="bg-white/90 hover:bg-white text-green-600 font-semibold text-[10px] md:text-xs px-2 md:px-3 py-1 h-auto"
           >
             ✈️ Победа
           </Button>
@@ -97,7 +97,7 @@ const Index = () => {
             size="sm"
             variant="secondary"
             onClick={() => window.open('https://www.utair.ru', '_blank')}
-            className="bg-white/90 hover:bg-white text-orange-600 font-semibold text-xs"
+            className="bg-white/90 hover:bg-white text-orange-600 font-semibold text-[10px] md:text-xs px-2 md:px-3 py-1 h-auto"
           >
             ✈️ UTair
           </Button>
@@ -105,7 +105,7 @@ const Index = () => {
             size="sm"
             variant="secondary"
             onClick={() => window.open('https://www.yamal.aero', '_blank')}
-            className="bg-white/90 hover:bg-white text-purple-600 font-semibold text-xs"
+            className="bg-white/90 hover:bg-white text-purple-600 font-semibold text-[10px] md:text-xs px-2 md:px-3 py-1 h-auto"
           >
             ✈️ Ямал
           </Button>
@@ -113,16 +113,16 @@ const Index = () => {
       </div>
 
       <nav className="fixed top-[52px] w-full z-50 bg-background/80 backdrop-blur-md border-b border-border">
-        <div className="container mx-auto px-6 py-4 flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <Icon name="Plane" className="text-primary" size={32} />
-            <span className="text-2xl font-bold text-foreground">Leviks Air</span>
-            <span className="text-2xl">🎄</span>
+        <div className="container mx-auto px-3 md:px-6 py-3 md:py-4 flex items-center justify-between">
+          <div className="flex items-center gap-2 md:gap-3">
+            <Icon name="Plane" className="text-primary" size={24} />
+            <span className="text-lg md:text-2xl font-bold text-foreground">Leviks Air</span>
+            <span className="text-lg md:text-2xl">🎄</span>
           </div>
-          <div className="flex items-center gap-6">
+          <div className="flex items-center gap-3 md:gap-6 overflow-x-auto">
             <button
               onClick={() => scrollToSection('home')}
-              className={`text-sm font-medium transition-colors hover:text-primary ${
+              className={`text-xs md:text-sm font-medium transition-colors hover:text-primary whitespace-nowrap ${
                 activeSection === 'home' ? 'text-primary' : 'text-muted-foreground'
               }`}
             >
@@ -130,7 +130,7 @@ const Index = () => {
             </button>
             <button
               onClick={() => scrollToSection('routes')}
-              className={`text-sm font-medium transition-colors hover:text-primary ${
+              className={`text-xs md:text-sm font-medium transition-colors hover:text-primary whitespace-nowrap hidden sm:block ${
                 activeSection === 'routes' ? 'text-primary' : 'text-muted-foreground'
               }`}
             >
@@ -138,7 +138,7 @@ const Index = () => {
             </button>
             <button
               onClick={() => scrollToSection('fleet')}
-              className={`text-sm font-medium transition-colors hover:text-primary ${
+              className={`text-xs md:text-sm font-medium transition-colors hover:text-primary whitespace-nowrap ${
                 activeSection === 'fleet' ? 'text-primary' : 'text-muted-foreground'
               }`}
             >
@@ -146,34 +146,34 @@ const Index = () => {
             </button>
             <button
               onClick={() => scrollToSection('history')}
-              className={`text-sm font-medium transition-colors hover:text-primary ${
+              className={`text-xs md:text-sm font-medium transition-colors hover:text-primary whitespace-nowrap hidden sm:block ${
                 activeSection === 'history' ? 'text-primary' : 'text-muted-foreground'
               }`}
             >
               История
             </button>
             {isAuthenticated ? (
-              <div className="flex items-center gap-3 ml-4">
-                <div className="flex items-center gap-2 px-3 py-1.5 bg-primary/10 rounded-full">
-                  <Icon name="User" className="text-primary" size={16} />
-                  <span className="text-sm font-medium text-primary">{userPhone}</span>
+              <div className="flex items-center gap-2 md:gap-3">
+                <div className="flex items-center gap-1 md:gap-2 px-2 md:px-3 py-1 md:py-1.5 bg-primary/10 rounded-full">
+                  <Icon name="User" className="text-primary" size={14} />
+                  <span className="text-xs md:text-sm font-medium text-primary hidden sm:inline">{userPhone}</span>
                 </div>
                 <Button
                   variant="ghost"
                   size="sm"
                   onClick={handleLogout}
-                  className="text-muted-foreground hover:text-foreground"
+                  className="text-muted-foreground hover:text-foreground p-1 md:p-2"
                 >
-                  <Icon name="LogOut" size={18} />
+                  <Icon name="LogOut" size={16} />
                 </Button>
               </div>
             ) : (
               <Button
                 onClick={() => setShowAuthDialog(true)}
                 size="sm"
-                className="ml-4"
+                className="text-xs md:text-sm px-2 md:px-4 h-auto py-1.5"
               >
-                <Icon name="LogIn" className="mr-2" size={16} />
+                <Icon name="LogIn" className="mr-1 md:mr-2" size={14} />
                 Войти
               </Button>
             )}
@@ -181,15 +181,15 @@ const Index = () => {
         </div>
       </nav>
 
-      <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden pt-[116px]">
+      <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden pt-[120px] md:pt-[116px]">
         <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-background to-secondary/20"></div>
         <div className="absolute inset-0">
-          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/10 rounded-full blur-3xl animate-pulse"></div>
-          <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-secondary/10 rounded-full blur-3xl delay-1000"></div>
+          <div className="absolute top-1/4 left-1/4 w-48 h-48 md:w-96 md:h-96 bg-primary/10 rounded-full blur-3xl animate-pulse"></div>
+          <div className="absolute bottom-1/4 right-1/4 w-48 h-48 md:w-96 md:h-96 bg-secondary/10 rounded-full blur-3xl delay-1000"></div>
         </div>
-        <div className="container mx-auto px-6 text-center relative z-10">
+        <div className="container mx-auto px-4 md:px-6 text-center relative z-10">
           <div
-            className="inline-block mb-6 cursor-pointer transition-transform hover:scale-110"
+            className="inline-block mb-4 md:mb-6 cursor-pointer transition-transform hover:scale-110"
             onClick={() => {
               const newClicks = planeClicks + 1;
               setPlaneClicks(newClicks);
@@ -199,25 +199,25 @@ const Index = () => {
               }
             }}
           >
-            <Icon name="Plane" className="text-primary" size={80} />
+            <Icon name="Plane" className="text-primary" size={60} />
           </div>
-          <h1 className="text-6xl md:text-7xl font-bold text-foreground mb-4 bg-clip-text text-transparent bg-gradient-to-r from-primary via-secondary to-primary">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-foreground mb-3 md:mb-4 bg-clip-text text-transparent bg-gradient-to-r from-primary via-secondary to-primary">
             Leviks Air 🎄
           </h1>
-          <p className="text-2xl font-semibold text-secondary mb-4">С Новым Годом! 🎅</p>
-          <p className="text-xl text-muted-foreground mb-4 max-w-2xl mx-auto">
+          <p className="text-xl md:text-2xl font-semibold text-secondary mb-3 md:mb-4">С Новым Годом! 🎅</p>
+          <p className="text-base md:text-xl text-muted-foreground mb-4 max-w-2xl mx-auto px-4">
             Инновационная авиакомпания будущего. Технологии, комфорт и безопасность на высоте 10 000 метров.
           </p>
-          <div className="flex items-center justify-center gap-6 mb-8">
-            <p className="text-sm text-muted-foreground">Дочерняя компания Аэрофлот</p>
-            <div className="h-4 w-px bg-border"></div>
-            <p className="text-sm text-muted-foreground">Член альянса SkyTeam</p>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-6 mb-6 md:mb-8">
+            <p className="text-xs md:text-sm text-muted-foreground">Дочерняя компания Аэрофлот</p>
+            <div className="hidden sm:block h-4 w-px bg-border"></div>
+            <p className="text-xs md:text-sm text-muted-foreground">Член альянса SkyTeam</p>
           </div>
-          <div className="flex gap-4 justify-center">
+          <div className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center px-4">
             <Button
               size="lg"
               onClick={() => window.open('https://www.aeroflot.ru', '_blank')}
-              className="bg-primary text-primary-foreground hover:bg-primary/90 font-semibold"
+              className="bg-primary text-primary-foreground hover:bg-primary/90 font-semibold w-full sm:w-auto"
             >
               Купить билет
               <Icon name="ArrowRight" className="ml-2" size={20} />
@@ -226,7 +226,7 @@ const Index = () => {
               size="lg"
               variant="outline"
               onClick={() => scrollToSection('fleet')}
-              className="border-primary text-primary hover:bg-primary/10"
+              className="border-primary text-primary hover:bg-primary/10 w-full sm:w-auto"
             >
               Наш флот
             </Button>
