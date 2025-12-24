@@ -4,9 +4,13 @@ import Icon from '@/components/ui/icon';
 import FleetSection from '@/components/FleetSection';
 import HistorySection from '@/components/HistorySection';
 import Snowfall from '@/components/Snowfall';
+import RoutesSection from '@/components/RoutesSection';
+import SecretGame from '@/components/SecretGame';
 
 const Index = () => {
   const [activeSection, setActiveSection] = useState('home');
+  const [planeClicks, setPlaneClicks] = useState(0);
+  const [showSecretGame, setShowSecretGame] = useState(false);
 
   const scrollToSection = (section: string) => {
     setActiveSection(section);
@@ -32,6 +36,14 @@ const Index = () => {
               }`}
             >
               Главная
+            </button>
+            <button
+              onClick={() => scrollToSection('routes')}
+              className={`text-sm font-medium transition-colors hover:text-primary ${
+                activeSection === 'routes' ? 'text-primary' : 'text-muted-foreground'
+              }`}
+            >
+              Маршруты
             </button>
             <button
               onClick={() => scrollToSection('fleet')}
@@ -60,7 +72,17 @@ const Index = () => {
           <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-secondary/10 rounded-full blur-3xl delay-1000"></div>
         </div>
         <div className="container mx-auto px-6 text-center relative z-10">
-          <div className="inline-block mb-6">
+          <div
+            className="inline-block mb-6 cursor-pointer transition-transform hover:scale-110"
+            onClick={() => {
+              const newClicks = planeClicks + 1;
+              setPlaneClicks(newClicks);
+              if (newClicks === 3) {
+                setShowSecretGame(true);
+                setPlaneClicks(0);
+              }
+            }}
+          >
             <Icon name="Plane" className="text-primary" size={80} />
           </div>
           <h1 className="text-6xl md:text-7xl font-bold text-foreground mb-4 bg-clip-text text-transparent bg-gradient-to-r from-primary via-secondary to-primary">
@@ -96,8 +118,11 @@ const Index = () => {
         </div>
       </section>
 
+      <RoutesSection />
       <FleetSection />
       <HistorySection />
+
+      {showSecretGame && <SecretGame onClose={() => setShowSecretGame(false)} />}
 
       <section className="py-16 bg-gradient-to-r from-card via-background to-card">
         <div className="container mx-auto px-6">
