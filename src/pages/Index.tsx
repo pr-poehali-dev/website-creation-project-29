@@ -9,7 +9,7 @@ import SecretGame from '@/components/SecretGame';
 import NewYearMagic from '@/components/NewYearMagic';
 import BackgroundMusic from '@/components/BackgroundMusic';
 import AuthDialog from '@/components/AuthDialog';
-import HackerAttack from '@/components/HackerAttack';
+import AeroflotBanner from '@/components/AeroflotBanner';
 import { toast } from 'sonner';
 
 const Index = () => {
@@ -57,7 +57,7 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      <HackerAttack />
+      <AeroflotBanner />
       <BackgroundMusic />
       <NewYearMagic />
       <Snowfall />
