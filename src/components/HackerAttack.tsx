@@ -1,22 +1,49 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 
 const HackerAttack = () => {
   const [isActive, setIsActive] = useState(false);
   const [timeLeft, setTimeLeft] = useState(300);
   const [glitchText, setGlitchText] = useState('SYSTEM HACKED');
+  const sirenRef = useRef<HTMLAudioElement | null>(null);
+
+  useEffect(() => {
+    const siren = new Audio('https://cdn.pixabay.com/download/audio/2022/03/15/audio_13bb4b3c55.mp3');
+    siren.loop = true;
+    siren.volume = 0.5;
+    sirenRef.current = siren;
+
+    return () => {
+      siren.pause();
+      sirenRef.current = null;
+    };
+  }, []);
 
   useEffect(() => {
     const checkTime = () => {
       const now = new Date();
-      const attackStart = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 16, 46, 0);
+      const attackStart = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 16, 57, 0);
       const attackEnd = new Date(attackStart.getTime() + 5 * 60 * 1000);
 
       if (now >= attackStart && now < attackEnd) {
-        setIsActive(true);
+        if (!isActive) {
+          setIsActive(true);
+          if (sirenRef.current) {
+            sirenRef.current.play().catch(() => {});
+          }
+          if (navigator.vibrate) {
+            navigator.vibrate([200, 100, 200, 100, 200]);
+          }
+        }
         const secondsLeft = Math.floor((attackEnd.getTime() - now.getTime()) / 1000);
         setTimeLeft(secondsLeft);
       } else {
-        setIsActive(false);
+        if (isActive) {
+          setIsActive(false);
+          if (sirenRef.current) {
+            sirenRef.current.pause();
+            sirenRef.current.currentTime = 0;
+          }
+        }
       }
     };
 
@@ -24,7 +51,7 @@ const HackerAttack = () => {
     const interval = setInterval(checkTime, 1000);
 
     return () => clearInterval(interval);
-  }, []);
+  }, [isActive]);
 
   useEffect(() => {
     if (!isActive) return;
