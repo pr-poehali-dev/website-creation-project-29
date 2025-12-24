@@ -31,6 +31,8 @@ const RoutesSection = () => {
             <img
               src="https://cdn.poehali.dev/projects/fa174cc1-5b97-4175-973a-f9bea28b014a/files/98a20106-979c-46f7-ad91-4115770f0de1.jpg"
               alt="Карта маршрутов"
+              loading="lazy"
+              decoding="async"
               className="rounded-xl border border-border"
             />
           </div>

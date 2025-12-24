@@ -6,15 +6,15 @@ const NewYearMagic = () => {
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
   useEffect(() => {
-    audioRef.current = new Audio('https://cdn.pixabay.com/download/audio/2022/02/22/audio_d1718ab41b.mp3');
-    audioRef.current.loop = true;
-    audioRef.current.volume = 0.3;
+    const audio = new Audio('https://cdn.pixabay.com/download/audio/2022/02/22/audio_d1718ab41b.mp3');
+    audio.loop = true;
+    audio.volume = 0.3;
+    audio.preload = 'none';
+    audioRef.current = audio;
 
     return () => {
-      if (audioRef.current) {
-        audioRef.current.pause();
-        audioRef.current = null;
-      }
+      audio.pause();
+      audioRef.current = null;
     };
   }, []);
 

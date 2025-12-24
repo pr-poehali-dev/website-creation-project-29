@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useMemo } from 'react';
 
 interface Snowflake {
   id: number;
@@ -9,18 +9,16 @@ interface Snowflake {
 }
 
 const Snowfall = () => {
-  const [snowflakes, setSnowflakes] = useState<Snowflake[]>([]);
-
-  useEffect(() => {
-    const flakes: Snowflake[] = Array.from({ length: 50 }, (_, i) => ({
+  const snowflakes = useMemo<Snowflake[]>(
+    () => Array.from({ length: 30 }, (_, i) => ({
       id: i,
       left: Math.random() * 100,
       animationDuration: Math.random() * 3 + 5,
       fontSize: Math.random() * 10 + 10,
       opacity: Math.random() * 0.6 + 0.4,
-    }));
-    setSnowflakes(flakes);
-  }, []);
+    })),
+    []
+  );
 
   return (
     <div className="fixed inset-0 pointer-events-none z-50 overflow-hidden">

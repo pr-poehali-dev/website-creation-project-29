@@ -217,6 +217,8 @@ const Index = () => {
                 <img
                   src="https://cdn.poehali.dev/projects/fa174cc1-5b97-4175-973a-f9bea28b014a/files/20be7446-c125-49bd-a833-0a15236c932a.jpg"
                   alt="Аэрофлот"
+                  loading="lazy"
+                  decoding="async"
                   className="h-20 object-contain group-hover:scale-110 transition-transform"
                 />
                 <div className="text-center">
@@ -235,6 +237,8 @@ const Index = () => {
                 <img
                   src="https://cdn.poehali.dev/projects/fa174cc1-5b97-4175-973a-f9bea28b014a/files/71a6bd82-e528-4773-aca3-774692a26fce.jpg"
                   alt="SkyTeam"
+                  loading="lazy"
+                  decoding="async"
                   className="h-20 object-contain group-hover:scale-110 transition-transform"
                 />
                 <div className="text-center">

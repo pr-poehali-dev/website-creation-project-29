@@ -11,23 +11,39 @@ const BackgroundMusic = () => {
   const [countdownTime, setCountdownTime] = useState('');
 
   useEffect(() => {
-    christmasMusicRef.current = new Audio('https://cdn.pixabay.com/download/audio/2022/02/22/audio_d1718ab41b.mp3');
-    christmasMusicRef.current.loop = true;
-    christmasMusicRef.current.volume = volume;
+    const christmasMusic = new Audio('https://cdn.pixabay.com/download/audio/2022/02/22/audio_d1718ab41b.mp3');
+    christmasMusic.loop = true;
+    christmasMusic.volume = volume;
+    christmasMusic.preload = 'metadata';
+    christmasMusicRef.current = christmasMusic;
 
-    countdownMusicRef.current = new Audio('https://cdn.pixabay.com/download/audio/2021/11/26/audio_234b6b6e54.mp3');
-    countdownMusicRef.current.loop = true;
-    countdownMusicRef.current.volume = volume;
+    const countdownMusic = new Audio('https://cdn.pixabay.com/download/audio/2021/11/26/audio_234b6b6e54.mp3');
+    countdownMusic.loop = true;
+    countdownMusic.volume = volume;
+    countdownMusic.preload = 'none';
+    countdownMusicRef.current = countdownMusic;
 
-    bellsRef.current = new Audio('https://cdn.pixabay.com/download/audio/2022/03/10/audio_4ddc77a6c3.mp3');
-    bellsRef.current.volume = volume;
+    const bells = new Audio('https://cdn.pixabay.com/download/audio/2022/03/10/audio_4ddc77a6c3.mp3');
+    bells.volume = volume;
+    bells.preload = 'none';
+    bellsRef.current = bells;
 
-    christmasMusicRef.current.play().catch(() => {});
+    const playPromise = christmasMusic.play();
+    if (playPromise !== undefined) {
+      playPromise.catch(() => {
+        document.addEventListener('click', () => {
+          christmasMusic.play().catch(() => {});
+        }, { once: true });
+      });
+    }
 
     return () => {
-      christmasMusicRef.current?.pause();
-      countdownMusicRef.current?.pause();
-      bellsRef.current?.pause();
+      christmasMusic.pause();
+      countdownMusic.pause();
+      bells.pause();
+      christmasMusicRef.current = null;
+      countdownMusicRef.current = null;
+      bellsRef.current = null;
     };
   }, []);
 
