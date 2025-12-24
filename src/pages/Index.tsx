@@ -63,25 +63,30 @@ const Index = () => {
           <h1 className="text-6xl md:text-7xl font-bold text-foreground mb-6 bg-clip-text text-transparent bg-gradient-to-r from-primary via-secondary to-primary">
             Leviks Air
           </h1>
-          <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
+          <p className="text-xl text-muted-foreground mb-4 max-w-2xl mx-auto">
             Инновационная авиакомпания будущего. Технологии, комфорт и безопасность на высоте 10 000 метров.
           </p>
+          <div className="flex items-center justify-center gap-6 mb-8">
+            <p className="text-sm text-muted-foreground">Дочерняя компания Аэрофлот</p>
+            <div className="h-4 w-px bg-border"></div>
+            <p className="text-sm text-muted-foreground">Член альянса SkyTeam</p>
+          </div>
           <div className="flex gap-4 justify-center">
             <Button
               size="lg"
-              onClick={() => scrollToSection('fleet')}
+              onClick={() => window.open('https://www.aeroflot.ru', '_blank')}
               className="bg-primary text-primary-foreground hover:bg-primary/90 font-semibold"
             >
-              Наш флот
+              Купить билет
               <Icon name="ArrowRight" className="ml-2" size={20} />
             </Button>
             <Button
               size="lg"
               variant="outline"
-              onClick={() => scrollToSection('history')}
+              onClick={() => scrollToSection('fleet')}
               className="border-primary text-primary hover:bg-primary/10"
             >
-              Узнать больше
+              Наш флот
             </Button>
           </div>
         </div>
@@ -89,6 +94,53 @@ const Index = () => {
 
       <FleetSection />
       <HistorySection />
+
+      <section className="py-16 bg-gradient-to-r from-card via-background to-card">
+        <div className="container mx-auto px-6">
+          <div className="text-center mb-8">
+            <h2 className="text-3xl font-bold text-foreground mb-2">Наши партнеры</h2>
+            <p className="text-muted-foreground">Часть глобальной авиационной семьи</p>
+          </div>
+          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+            <a
+              href="https://www.aeroflot.ru"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-card border border-border rounded-xl p-8 hover:border-primary transition-all duration-300 group"
+            >
+              <div className="flex flex-col items-center gap-4">
+                <img
+                  src="https://cdn.poehali.dev/projects/fa174cc1-5b97-4175-973a-f9bea28b014a/files/20be7446-c125-49bd-a833-0a15236c932a.jpg"
+                  alt="Аэрофлот"
+                  className="h-20 object-contain group-hover:scale-110 transition-transform"
+                />
+                <div className="text-center">
+                  <h3 className="text-xl font-semibold text-foreground mb-2">Аэрофлот</h3>
+                  <p className="text-sm text-muted-foreground">Материнская компания</p>
+                </div>
+              </div>
+            </a>
+            <a
+              href="https://www.skyteam.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-card border border-border rounded-xl p-8 hover:border-primary transition-all duration-300 group"
+            >
+              <div className="flex flex-col items-center gap-4">
+                <img
+                  src="https://cdn.poehali.dev/projects/fa174cc1-5b97-4175-973a-f9bea28b014a/files/71a6bd82-e528-4773-aca3-774692a26fce.jpg"
+                  alt="SkyTeam"
+                  className="h-20 object-contain group-hover:scale-110 transition-transform"
+                />
+                <div className="text-center">
+                  <h3 className="text-xl font-semibold text-foreground mb-2">SkyTeam</h3>
+                  <p className="text-sm text-muted-foreground">Глобальный авиационный альянс</p>
+                </div>
+              </div>
+            </a>
+          </div>
+        </div>
+      </section>
 
       <footer className="bg-card border-t border-border py-12">
         <div className="container mx-auto px-6">
@@ -98,8 +150,11 @@ const Index = () => {
                 <Icon name="Plane" className="text-primary" size={24} />
                 <span className="text-xl font-bold text-foreground">Leviks Air</span>
               </div>
-              <p className="text-muted-foreground text-sm">
+              <p className="text-muted-foreground text-sm mb-3">
                 Авиакомпания нового поколения, соединяющая технологии и комфорт
+              </p>
+              <p className="text-xs text-muted-foreground">
+                Дочерняя компания Аэрофлот | Член альянса SkyTeam
               </p>
             </div>
             <div>
