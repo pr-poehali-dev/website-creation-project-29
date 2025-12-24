@@ -24,19 +24,51 @@ const AuthDialog = ({ open, onClose, onSuccess }: AuthDialogProps) => {
   const [phone, setPhone] = useState('');
   const [code, setCode] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const [sentCode, setSentCode] = useState<string>('');
 
   const handleSendCode = async () => {
-    if (phone.length < 10) {
+    const phoneClean = phone.replace(/\D/g, '');
+    if (phoneClean.length < 10) {
       toast.error('Введите корректный номер телефона');
       return;
     }
 
     setIsLoading(true);
-    setTimeout(() => {
+
+    try {
+      const generatedCode = Math.floor(100000 + Math.random() * 900000).toString();
+      setSentCode(generatedCode);
+
+      const message = `Ваш код для входа в Leviks Air: ${generatedCode}`;
+      const apiKey = 'E0D63E0A-CE49-74CF-51B0-08C6D9ECC2EA';
+
+      const params = new URLSearchParams({
+        api_id: apiKey,
+        to: phoneClean,
+        msg: message,
+        json: '1'
+      });
+
+      const response = await fetch(`https://sms.ru/sms/send?${params.toString()}`, {
+        method: 'GET'
+      });
+
+      const result = await response.json();
+
+      if (result.status === 'OK') {
+        setIsLoading(false);
+        setStep('code');
+        toast.success('Код отправлен на ваш номер телефона!');
+      } else {
+        setIsLoading(false);
+        toast.error(`Ошибка отправки: ${result.status_text || 'Неизвестная ошибка'}`);
+        console.log('Тестовый код:', generatedCode);
+      }
+    } catch (error) {
       setIsLoading(false);
-      setStep('code');
-      toast.success('Код отправлен на ваш номер телефона');
-    }, 1500);
+      toast.error('Не удалось отправить SMS. Попробуйте позже');
+      console.error('SMS Error:', error);
+    }
   };
 
   const handleVerifyCode = async () => {
@@ -46,15 +78,24 @@ const AuthDialog = ({ open, onClose, onSuccess }: AuthDialogProps) => {
     }
 
     setIsLoading(true);
-    setTimeout(() => {
-      setIsLoading(false);
-      toast.success('Вы успешно вошли!');
-      onSuccess(phone);
-      onClose();
-      setStep('phone');
-      setPhone('');
-      setCode('');
-    }, 1500);
+
+    if (code === sentCode) {
+      setTimeout(() => {
+        setIsLoading(false);
+        toast.success('Вы успешно вошли!');
+        onSuccess(phone);
+        onClose();
+        setStep('phone');
+        setPhone('');
+        setCode('');
+        setSentCode('');
+      }, 500);
+    } else {
+      setTimeout(() => {
+        setIsLoading(false);
+        toast.error('Неверный код. Попробуйте снова');
+      }, 500);
+    }
   };
 
   const handleBack = () => {
