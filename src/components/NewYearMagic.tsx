@@ -1,8 +1,22 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 
 const NewYearMagic = () => {
   const [isActive, setIsActive] = useState(false);
   const [countdown, setCountdown] = useState('');
+  const audioRef = useRef<HTMLAudioElement | null>(null);
+
+  useEffect(() => {
+    audioRef.current = new Audio('https://cdn.pixabay.com/download/audio/2022/02/22/audio_d1718ab41b.mp3');
+    audioRef.current.loop = true;
+    audioRef.current.volume = 0.3;
+
+    return () => {
+      if (audioRef.current) {
+        audioRef.current.pause();
+        audioRef.current = null;
+      }
+    };
+  }, []);
 
   useEffect(() => {
     const checkNewYear = () => {
@@ -13,11 +27,18 @@ const NewYearMagic = () => {
 
       if (now >= newYearStart && now < newYearEnd) {
         setIsActive(true);
+        if (audioRef.current && audioRef.current.paused) {
+          audioRef.current.play().catch(err => console.log('Audio play failed:', err));
+        }
         const minutesLeft = Math.floor((newYearEnd.getTime() - now.getTime()) / 60000);
         const secondsLeft = Math.floor(((newYearEnd.getTime() - now.getTime()) % 60000) / 1000);
         setCountdown(`Магия продлится еще ${minutesLeft}:${secondsLeft.toString().padStart(2, '0')}`);
       } else {
         setIsActive(false);
+        if (audioRef.current && !audioRef.current.paused) {
+          audioRef.current.pause();
+          audioRef.current.currentTime = 0;
+        }
         const timeUntilNewYear = newYearStart.getTime() - now.getTime();
         if (timeUntilNewYear > 0 && timeUntilNewYear < 86400000) {
           const hoursLeft = Math.floor(timeUntilNewYear / 3600000);
@@ -48,6 +69,20 @@ const NewYearMagic = () => {
       <div className="fixed top-20 right-4 z-50 bg-gradient-to-r from-red-600 to-red-700 text-white px-6 py-3 rounded-full shadow-2xl animate-pulse">
         <p className="text-lg font-bold">🎊 НОВОГОДНЯЯ МАГИЯ! 🎊</p>
         <p className="text-xs text-center mt-1">{countdown}</p>
+        <button
+          onClick={() => {
+            if (audioRef.current) {
+              if (audioRef.current.paused) {
+                audioRef.current.play();
+              } else {
+                audioRef.current.pause();
+              }
+            }
+          }}
+          className="mt-2 text-xs bg-white/20 hover:bg-white/30 px-3 py-1 rounded-full transition-colors"
+        >
+          🎵 Музыка
+        </button>
       </div>
 
       <div className="fixed inset-0 pointer-events-none z-[60] overflow-hidden">
