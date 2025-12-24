@@ -38,7 +38,7 @@ const FleetSection = () => {
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
           <h2 className="text-5xl font-bold text-foreground mb-4 bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary">
-            Наш Флот
+            🎁 Наш Флот
           </h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
             Современные воздушные суда с передовыми технологиями и максимальным комфортом

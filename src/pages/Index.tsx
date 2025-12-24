@@ -3,6 +3,7 @@ import { Button } from '@/components/ui/button';
 import Icon from '@/components/ui/icon';
 import FleetSection from '@/components/FleetSection';
 import HistorySection from '@/components/HistorySection';
+import Snowfall from '@/components/Snowfall';
 
 const Index = () => {
   const [activeSection, setActiveSection] = useState('home');
@@ -15,11 +16,13 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <Snowfall />
       <nav className="fixed top-0 w-full z-50 bg-background/80 backdrop-blur-md border-b border-border">
         <div className="container mx-auto px-6 py-4 flex items-center justify-between">
           <div className="flex items-center gap-3">
             <Icon name="Plane" className="text-primary" size={32} />
             <span className="text-2xl font-bold text-foreground">Leviks Air</span>
+            <span className="text-2xl">🎄</span>
           </div>
           <div className="flex gap-6">
             <button
@@ -60,9 +63,10 @@ const Index = () => {
           <div className="inline-block mb-6">
             <Icon name="Plane" className="text-primary" size={80} />
           </div>
-          <h1 className="text-6xl md:text-7xl font-bold text-foreground mb-6 bg-clip-text text-transparent bg-gradient-to-r from-primary via-secondary to-primary">
-            Leviks Air
+          <h1 className="text-6xl md:text-7xl font-bold text-foreground mb-4 bg-clip-text text-transparent bg-gradient-to-r from-primary via-secondary to-primary">
+            Leviks Air 🎄
           </h1>
+          <p className="text-2xl font-semibold text-secondary mb-4">С Новым Годом! 🎅</p>
           <p className="text-xl text-muted-foreground mb-4 max-w-2xl mx-auto">
             Инновационная авиакомпания будущего. Технологии, комфорт и безопасность на высоте 10 000 метров.
           </p>
@@ -98,7 +102,7 @@ const Index = () => {
       <section className="py-16 bg-gradient-to-r from-card via-background to-card">
         <div className="container mx-auto px-6">
           <div className="text-center mb-8">
-            <h2 className="text-3xl font-bold text-foreground mb-2">Наши партнеры</h2>
+            <h2 className="text-3xl font-bold text-foreground mb-2">🎄 Наши партнеры</h2>
             <p className="text-muted-foreground">Часть глобальной авиационной семьи</p>
           </div>
           <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
