@@ -8,7 +8,7 @@ import RoutesSection from '@/components/RoutesSection';
 import SecretGame from '@/components/SecretGame';
 import NewYearMagic from '@/components/NewYearMagic';
 import BackgroundMusic from '@/components/BackgroundMusic';
-import AuthDialog from '@/components/AuthDialog';
+
 import AeroflotBanner from '@/components/AeroflotBanner';
 import HackerAttack from '@/components/HackerAttack';
 import ApologyMessage from '@/components/ApologyMessage';
@@ -19,32 +19,11 @@ const Index = () => {
   const [planeClicks, setPlaneClicks] = useState(0);
   const [showSecretGame, setShowSecretGame] = useState(false);
   const [snowmenUnlocked, setSnowmenUnlocked] = useState(false);
-  const [showAuthDialog, setShowAuthDialog] = useState(false);
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [userPhone, setUserPhone] = useState<string | null>(null);
 
   useEffect(() => {
     const unlocked = localStorage.getItem('snowmenUnlocked') === 'true';
     setSnowmenUnlocked(unlocked);
-    const savedPhone = localStorage.getItem('userPhone');
-    if (savedPhone) {
-      setIsAuthenticated(true);
-      setUserPhone(savedPhone);
-    }
   }, []);
-
-  const handleAuthSuccess = (phone: string) => {
-    setIsAuthenticated(true);
-    setUserPhone(phone);
-    localStorage.setItem('userPhone', phone);
-  };
-
-  const handleLogout = () => {
-    setIsAuthenticated(false);
-    setUserPhone(null);
-    localStorage.removeItem('userPhone');
-    toast.success('Вы вышли из аккаунта');
-  };
 
   const handleGameWin = () => {
     localStorage.setItem('snowmenUnlocked', 'true');
@@ -152,31 +131,6 @@ const Index = () => {
             >
               История
             </button>
-            {isAuthenticated ? (
-              <div className="flex items-center gap-2 md:gap-3">
-                <div className="flex items-center gap-1 md:gap-2 px-2 md:px-3 py-1 md:py-1.5 bg-primary/10 rounded-full">
-                  <Icon name="User" className="text-primary" size={14} />
-                  <span className="text-xs md:text-sm font-medium text-primary hidden sm:inline">{userPhone}</span>
-                </div>
-                <Button
-                  variant="ghost"
-                  size="sm"
-                  onClick={handleLogout}
-                  className="text-muted-foreground hover:text-foreground p-1 md:p-2"
-                >
-                  <Icon name="LogOut" size={16} />
-                </Button>
-              </div>
-            ) : (
-              <Button
-                onClick={() => setShowAuthDialog(true)}
-                size="sm"
-                className="text-xs md:text-sm px-2 md:px-4 h-auto py-1.5"
-              >
-                <Icon name="LogIn" className="mr-1 md:mr-2" size={14} />
-                Войти
-              </Button>
-            )}
           </div>
         </div>
       </nav>
@@ -239,11 +193,6 @@ const Index = () => {
       <HistorySection />
 
       {showSecretGame && <SecretGame onClose={() => setShowSecretGame(false)} onWin={handleGameWin} />}
-      <AuthDialog
-        open={showAuthDialog}
-        onClose={() => setShowAuthDialog(false)}
-        onSuccess={handleAuthSuccess}
-      />
 
       {snowmenUnlocked && (
         <div className="fixed inset-0 pointer-events-none z-40 overflow-hidden">
