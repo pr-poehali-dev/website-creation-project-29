@@ -8,17 +8,40 @@ import RoutesSection from '@/components/RoutesSection';
 import SecretGame from '@/components/SecretGame';
 import NewYearMagic from '@/components/NewYearMagic';
 import BackgroundMusic from '@/components/BackgroundMusic';
+import AuthDialog from '@/components/AuthDialog';
+import { toast } from 'sonner';
 
 const Index = () => {
   const [activeSection, setActiveSection] = useState('home');
   const [planeClicks, setPlaneClicks] = useState(0);
   const [showSecretGame, setShowSecretGame] = useState(false);
   const [snowmenUnlocked, setSnowmenUnlocked] = useState(false);
+  const [showAuthDialog, setShowAuthDialog] = useState(false);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [userPhone, setUserPhone] = useState<string | null>(null);
 
   useEffect(() => {
     const unlocked = localStorage.getItem('snowmenUnlocked') === 'true';
     setSnowmenUnlocked(unlocked);
+    const savedPhone = localStorage.getItem('userPhone');
+    if (savedPhone) {
+      setIsAuthenticated(true);
+      setUserPhone(savedPhone);
+    }
   }, []);
+
+  const handleAuthSuccess = (phone: string) => {
+    setIsAuthenticated(true);
+    setUserPhone(phone);
+    localStorage.setItem('userPhone', phone);
+  };
+
+  const handleLogout = () => {
+    setIsAuthenticated(false);
+    setUserPhone(null);
+    localStorage.removeItem('userPhone');
+    toast.success('Вы вышли из аккаунта');
+  };
 
   const handleGameWin = () => {
     localStorage.setItem('snowmenUnlocked', 'true');
@@ -43,7 +66,7 @@ const Index = () => {
             <span className="text-2xl font-bold text-foreground">Leviks Air</span>
             <span className="text-2xl">🎄</span>
           </div>
-          <div className="flex gap-6">
+          <div className="flex items-center gap-6">
             <button
               onClick={() => scrollToSection('home')}
               className={`text-sm font-medium transition-colors hover:text-primary ${
@@ -76,6 +99,31 @@ const Index = () => {
             >
               История
             </button>
+            {isAuthenticated ? (
+              <div className="flex items-center gap-3 ml-4">
+                <div className="flex items-center gap-2 px-3 py-1.5 bg-primary/10 rounded-full">
+                  <Icon name="User" className="text-primary" size={16} />
+                  <span className="text-sm font-medium text-primary">{userPhone}</span>
+                </div>
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  onClick={handleLogout}
+                  className="text-muted-foreground hover:text-foreground"
+                >
+                  <Icon name="LogOut" size={18} />
+                </Button>
+              </div>
+            ) : (
+              <Button
+                onClick={() => setShowAuthDialog(true)}
+                size="sm"
+                className="ml-4"
+              >
+                <Icon name="LogIn" className="mr-2" size={16} />
+                Войти
+              </Button>
+            )}
           </div>
         </div>
       </nav>
@@ -138,6 +186,11 @@ const Index = () => {
       <HistorySection />
 
       {showSecretGame && <SecretGame onClose={() => setShowSecretGame(false)} onWin={handleGameWin} />}
+      <AuthDialog
+        open={showAuthDialog}
+        onClose={() => setShowAuthDialog(false)}
+        onSuccess={handleAuthSuccess}
+      />
 
       {snowmenUnlocked && (
         <div className="fixed inset-0 pointer-events-none z-40 overflow-hidden">
