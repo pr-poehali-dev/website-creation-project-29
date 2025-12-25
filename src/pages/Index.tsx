@@ -52,10 +52,9 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      <ApologyMessage />
-      <HackerAttack />
+
       <AeroflotBanner />
-      <BackgroundMusic />
+
       <NewYearMagic />
       <Snowfall />
       

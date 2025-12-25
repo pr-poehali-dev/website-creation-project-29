@@ -135,10 +135,10 @@ const ReviewsSection = () => {
         {showAddReview && (
           <Card className="max-w-2xl mx-auto mb-12 border-primary">
             <CardContent className="p-6 space-y-4">
-              <h3 className="text-xl font-bold mb-4">Ваш отзыв</h3>
+              <h3 className="text-xl font-bold mb-4 text-foreground">Ваш отзыв</h3>
               
               <div>
-                <label className="text-sm font-medium mb-2 block">Ваше имя</label>
+                <label className="text-sm font-medium mb-2 block text-foreground">Ваше имя</label>
                 <input
                   type="text"
                   value={newReview.name}
@@ -149,7 +149,7 @@ const ReviewsSection = () => {
               </div>
 
               <div>
-                <label className="text-sm font-medium mb-2 block">Маршрут</label>
+                <label className="text-sm font-medium mb-2 block text-foreground">Маршрут</label>
                 <input
                   type="text"
                   value={newReview.route}
@@ -160,7 +160,7 @@ const ReviewsSection = () => {
               </div>
 
               <div>
-                <label className="text-sm font-medium mb-2 block">Оценка</label>
+                <label className="text-sm font-medium mb-2 block text-foreground">Оценка</label>
                 <div className="flex gap-2">
                   {[1, 2, 3, 4, 5].map((star) => (
                     <button
@@ -179,7 +179,7 @@ const ReviewsSection = () => {
               </div>
 
               <div>
-                <label className="text-sm font-medium mb-2 block">Ваш отзыв</label>
+                <label className="text-sm font-medium mb-2 block text-foreground">Ваш отзыв</label>
                 <textarea
                   value={newReview.comment}
                   onChange={(e) => setNewReview({ ...newReview, comment: e.target.value })}
@@ -209,13 +209,13 @@ const ReviewsSection = () => {
                 <div className="flex items-start gap-4 mb-4">
                   <div className="text-4xl">{review.avatar}</div>
                   <div className="flex-1">
-                    <h4 className="font-bold text-lg mb-1">{review.name}</h4>
+                    <h4 className="font-bold text-lg mb-1 text-foreground">{review.name}</h4>
                     <p className="text-sm text-muted-foreground mb-2">{review.route}</p>
                     {renderStars(review.rating)}
                   </div>
                 </div>
                 
-                <p className="text-muted-foreground mb-3 leading-relaxed">
+                <p className="text-foreground mb-3 leading-relaxed">
                   {review.comment}
                 </p>
                 

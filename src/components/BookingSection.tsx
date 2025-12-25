@@ -89,7 +89,7 @@ const BookingSection = () => {
           <CardContent className="space-y-6">
             <div className="grid md:grid-cols-2 gap-4">
               <div>
-                <label className="text-sm font-medium mb-2 block">Откуда</label>
+                <label className="text-sm font-medium mb-2 block text-foreground">Откуда</label>
                 <input
                   type="text"
                   value={from}
@@ -99,7 +99,7 @@ const BookingSection = () => {
                 />
               </div>
               <div>
-                <label className="text-sm font-medium mb-2 block">Куда</label>
+                <label className="text-sm font-medium mb-2 block text-foreground">Куда</label>
                 <input
                   type="text"
                   value={to}
@@ -112,7 +112,7 @@ const BookingSection = () => {
 
             <div className="grid md:grid-cols-3 gap-4">
               <div>
-                <label className="text-sm font-medium mb-2 block">Дата вылета</label>
+                <label className="text-sm font-medium mb-2 block text-foreground">Дата вылета</label>
                 <input
                   type="date"
                   value={date}
@@ -121,7 +121,7 @@ const BookingSection = () => {
                 />
               </div>
               <div>
-                <label className="text-sm font-medium mb-2 block">Пассажиры</label>
+                <label className="text-sm font-medium mb-2 block text-foreground">Пассажиры</label>
                 <input
                   type="number"
                   min="1"
@@ -132,7 +132,7 @@ const BookingSection = () => {
                 />
               </div>
               <div>
-                <label className="text-sm font-medium mb-2 block">Класс</label>
+                <label className="text-sm font-medium mb-2 block text-foreground">Класс</label>
                 <select
                   value={selectedClass}
                   onChange={(e) => setSelectedClass(e.target.value as any)}
@@ -154,7 +154,7 @@ const BookingSection = () => {
 
         {searchResults.length > 0 && (
           <div className="max-w-4xl mx-auto space-y-4">
-            <h3 className="text-2xl font-bold mb-6">Доступные рейсы</h3>
+            <h3 className="text-2xl font-bold mb-6 text-foreground">Доступные рейсы</h3>
             {searchResults.map((flight) => (
               <Card
                 key={flight.id}
@@ -168,7 +168,7 @@ const BookingSection = () => {
                     <div className="flex-1 min-w-[200px]">
                       <div className="flex items-center gap-4 mb-2">
                         <div className="text-center">
-                          <p className="text-2xl font-bold">{flight.departure}</p>
+                          <p className="text-2xl font-bold text-foreground">{flight.departure}</p>
                           <p className="text-sm text-muted-foreground">{flight.from.split(' ')[0]}</p>
                         </div>
                         <div className="flex-1 flex flex-col items-center">
@@ -176,7 +176,7 @@ const BookingSection = () => {
                           <p className="text-xs text-muted-foreground">{flight.duration}</p>
                         </div>
                         <div className="text-center">
-                          <p className="text-2xl font-bold">{flight.arrival}</p>
+                          <p className="text-2xl font-bold text-foreground">{flight.arrival}</p>
                           <p className="text-sm text-muted-foreground">{flight.to.split(' ')[0]}</p>
                         </div>
                       </div>
