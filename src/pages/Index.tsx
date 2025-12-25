@@ -8,6 +8,16 @@ import RoutesSection from '@/components/RoutesSection';
 import SecretGame from '@/components/SecretGame';
 import NewYearMagic from '@/components/NewYearMagic';
 import BackgroundMusic from '@/components/BackgroundMusic';
+import BookingSection from '@/components/BookingSection';
+import SearchHeader from '@/components/SearchHeader';
+import FlightStatus from '@/components/FlightStatus';
+import ServicesSection from '@/components/ServicesSection';
+import RouteMap from '@/components/RouteMap';
+import ReviewsSection from '@/components/ReviewsSection';
+import FAQSection from '@/components/FAQSection';
+import SupportChat from '@/components/SupportChat';
+import SocialShare from '@/components/SocialShare';
+import VideoGallery from '@/components/VideoGallery';
 
 import AeroflotBanner from '@/components/AeroflotBanner';
 import HackerAttack from '@/components/HackerAttack';
@@ -34,6 +44,10 @@ const Index = () => {
     setActiveSection(section);
     const element = document.getElementById(section);
     element?.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  const handleSearch = (query: string) => {
+    toast.info(`Поиск: "${query}". Функция в разработке.`);
   };
 
   return (
@@ -108,6 +122,14 @@ const Index = () => {
               Главная
             </button>
             <button
+              onClick={() => scrollToSection('booking')}
+              className={`text-xs md:text-sm font-medium transition-colors hover:text-primary whitespace-nowrap ${
+                activeSection === 'booking' ? 'text-primary' : 'text-muted-foreground'
+              }`}
+            >
+              Билеты
+            </button>
+            <button
               onClick={() => scrollToSection('routes')}
               className={`text-xs md:text-sm font-medium transition-colors hover:text-primary whitespace-nowrap hidden sm:block ${
                 activeSection === 'routes' ? 'text-primary' : 'text-muted-foreground'
@@ -123,14 +145,7 @@ const Index = () => {
             >
               Флот
             </button>
-            <button
-              onClick={() => scrollToSection('history')}
-              className={`text-xs md:text-sm font-medium transition-colors hover:text-primary whitespace-nowrap hidden sm:block ${
-                activeSection === 'history' ? 'text-primary' : 'text-muted-foreground'
-              }`}
-            >
-              История
-            </button>
+            <SearchHeader onSearch={handleSearch} />
           </div>
         </div>
       </nav>
@@ -188,10 +203,19 @@ const Index = () => {
         </div>
       </section>
 
+      <BookingSection />
+      <FlightStatus />
+      <ServicesSection />
       <RoutesSection />
+      <RouteMap />
       <FleetSection />
       <HistorySection />
+      <ReviewsSection />
+      <VideoGallery />
+      <FAQSection />
+      <SocialShare />
 
+      <SupportChat />
       {showSecretGame && <SecretGame onClose={() => setShowSecretGame(false)} onWin={handleGameWin} />}
 
       {snowmenUnlocked && (
