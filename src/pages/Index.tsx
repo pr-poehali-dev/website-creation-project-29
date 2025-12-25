@@ -29,6 +29,7 @@ import PriceCalculator from '@/components/PriceCalculator';
 import AeroflotBanner from '@/components/AeroflotBanner';
 import HackerAttack from '@/components/HackerAttack';
 import ApologyMessage from '@/components/ApologyMessage';
+import GoldenParticles from '@/components/GoldenParticles';
 import { toast } from 'sonner';
 
 const Index = () => {
@@ -85,6 +86,7 @@ const Index = () => {
 
       <AeroflotBanner />
 
+      {isPremium && <GoldenParticles />}
       <NewYearMagic />
       <Snowfall />
       
