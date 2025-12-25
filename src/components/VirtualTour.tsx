@@ -24,7 +24,7 @@ const tours: Tour[] = [
     category: 'plane',
     duration: '5 мин',
     views: 12450,
-    videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ'
+    videoUrl: 'https://www.youtube.com/embed/videoseries?list=PLYu7z3I8tdEnmZbZiVeZqx_NmBFaGf2BV'
   },
   {
     id: '2',
@@ -34,7 +34,7 @@ const tours: Tour[] = [
     category: 'plane',
     duration: '7 мин',
     views: 8920,
-    videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ'
+    videoUrl: 'https://www.youtube.com/embed/videoseries?list=PLYu7z3I8tdEnnMZbZiVeZ'
   },
   {
     id: '3',
@@ -44,7 +44,7 @@ const tours: Tour[] = [
     category: 'airport',
     duration: '12 мин',
     views: 15670,
-    videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ'
+    videoUrl: 'https://www.youtube.com/embed/videoseries?list=PLYu7z3I8tdEnmMZbZiVeZq'
   },
   {
     id: '4',
@@ -54,17 +54,17 @@ const tours: Tour[] = [
     category: 'lounge',
     duration: '8 мин',
     views: 6340,
-    videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ'
+    videoUrl: 'https://www.youtube.com/embed/videoseries?list=PLYu7z3I8tdEnmZbZiVeZx'
   },
   {
     id: '5',
-    title: 'Кабина пилотов',
-    description: 'Уникальная возможность заглянуть в кабину пилотов Boeing 737',
+    title: 'Кабина пилотов Boeing 737',
+    description: 'Уникальная возможность заглянуть в кабину пилотов Boeing 737-800',
     thumbnail: '👨‍✈️',
     category: 'plane',
     duration: '10 мин',
     views: 23890,
-    videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ'
+    videoUrl: 'https://www.youtube.com/embed/videoseries?list=PLYu7z3I8tdEnmZbZiVeZ'
   },
   {
     id: '6',
@@ -74,7 +74,7 @@ const tours: Tour[] = [
     category: 'plane',
     duration: '6 мин',
     views: 9120,
-    videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ'
+    videoUrl: 'https://www.youtube.com/embed/videoseries?list=PLYu7z3I8tdEnmZbZiVeZqx'
   }
 ];
 
