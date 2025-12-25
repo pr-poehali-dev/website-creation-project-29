@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import Icon from '@/components/ui/icon';
@@ -28,6 +28,12 @@ const AirportMap = () => {
   const [selectedFloor, setSelectedFloor] = useState(2);
   const [selectedType, setSelectedType] = useState<string>('all');
   const [hoveredLocation, setHoveredLocation] = useState<Location | null>(null);
+  const [isPremium, setIsPremium] = useState(false);
+
+  useEffect(() => {
+    const premium = localStorage.getItem('isPremium') === 'true';
+    setIsPremium(premium);
+  }, []);
 
   const filteredLocations = locations.filter(
     (loc) => loc.floor === selectedFloor && (selectedType === 'all' || loc.type === selectedType)
@@ -59,12 +65,49 @@ const AirportMap = () => {
     }
   };
 
+  if (!isPremium) {
+    return (
+      <section id="airport-map" className="py-20 bg-muted/30">
+        <div className="container mx-auto px-6">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
+              Интерактивная карта аэропорта
+            </h2>
+            <p className="text-muted-foreground text-lg">
+              Легко найдите нужное место в аэропорту Шереметьево
+            </p>
+          </div>
+          <div className="max-w-4xl mx-auto">
+            <Card className="border-2 border-yellow-500/50 relative">
+              <div className="absolute inset-0 bg-gradient-to-br from-yellow-500/10 to-amber-500/10 backdrop-blur-sm z-10 flex items-center justify-center rounded-lg">
+                <div className="text-center p-8">
+                  <span className="text-6xl mb-4 block">👑</span>
+                  <h3 className="text-2xl font-bold mb-3 bg-gradient-to-r from-yellow-400 via-amber-500 to-yellow-400 bg-clip-text text-transparent">
+                    Premium контент
+                  </h3>
+                  <p className="text-muted-foreground mb-4">
+                    Интерактивная карта аэропорта доступна только для Premium-пользователей
+                  </p>
+                </div>
+              </div>
+              <CardContent className="p-8 blur-sm">
+                <div className="bg-muted/50 rounded-lg h-[500px]"></div>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </section>
+    );
+  }
+
   return (
     <section id="airport-map" className="py-20 bg-muted/30">
       <div className="container mx-auto px-6">
         <div className="text-center mb-12">
-          <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
+          <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4 flex items-center justify-center gap-3">
+            <span className="text-3xl">👑</span>
             Интерактивная карта аэропорта
+            <span className="text-sm bg-gradient-to-r from-yellow-400 via-amber-500 to-yellow-400 text-black px-3 py-1 rounded-full">Premium</span>
           </h2>
           <p className="text-muted-foreground text-lg">
             Легко найдите нужное место в аэропорту Шереметьево

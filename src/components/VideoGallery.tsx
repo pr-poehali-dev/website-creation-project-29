@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import Icon from '@/components/ui/icon';
 
@@ -12,6 +12,7 @@ interface Video {
 }
 
 const videos: Video[] = [
+  // Premium-контент: видео о работе пилотов, устройстве самолётов, безопасности
   {
     id: '1',
     title: 'Обзор самолёта Boeing 737-800',
@@ -96,6 +97,12 @@ const categories = [
 
 const VideoGallery = () => {
   const [selectedCategory, setSelectedCategory] = useState('all');
+  const [isPremium, setIsPremium] = useState(false);
+
+  useEffect(() => {
+    const premium = localStorage.getItem('isPremium') === 'true';
+    setIsPremium(premium);
+  }, []);
   const [selectedVideo, setSelectedVideo] = useState<Video | null>(null);
 
   const filteredVideos = selectedCategory === 'all'
@@ -106,11 +113,13 @@ const VideoGallery = () => {
     <section id="videos" className="py-20 bg-muted/30">
       <div className="container mx-auto px-6">
         <div className="text-center mb-12">
-          <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
+          <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4 flex items-center justify-center gap-3">
+            {isPremium && <span className="text-3xl">👑</span>}
             Видео о Leviks Air
+            {isPremium && <span className="text-sm bg-gradient-to-r from-yellow-400 via-amber-500 to-yellow-400 text-black px-3 py-1 rounded-full">Premium</span>}
           </h2>
           <p className="text-muted-foreground text-lg">
-            Узнайте больше о нашей авиакомпании из видеороликов
+            {isPremium ? 'Узнайте больше о нашей авиакомпании из видеороликов' : 'Эксклюзивные видео о работе пилотов, устройстве самолётов и безопасности'}
           </p>
         </div>
 
@@ -135,10 +144,24 @@ const VideoGallery = () => {
           {filteredVideos.map((video) => (
             <Card
               key={video.id}
-              className="cursor-pointer group hover:shadow-xl transition-all hover:scale-105"
-              onClick={() => setSelectedVideo(video)}
+              className={`cursor-pointer group hover:shadow-xl transition-all hover:scale-105 ${!isPremium ? 'opacity-60' : ''}`}
+              onClick={() => {
+                if (!isPremium) {
+                  alert('👑 Видеогалерея доступна только для Premium-пользователей');
+                  return;
+                }
+                setSelectedVideo(video);
+              }}
             >
-              <CardContent className="p-0">
+              <CardContent className="p-0 relative">
+                {!isPremium && (
+                  <div className="absolute inset-0 bg-black/60 backdrop-blur-sm z-20 rounded-lg flex items-center justify-center">
+                    <div className="text-center p-4">
+                      <span className="text-4xl mb-2 block">🔒</span>
+                      <p className="text-white text-sm font-semibold">Premium</p>
+                    </div>
+                  </div>
+                )}
                 <div className="relative aspect-video bg-gradient-to-br from-primary/20 to-secondary/20 flex items-center justify-center rounded-t-lg overflow-hidden">
                   <div className="text-8xl group-hover:scale-110 transition-transform">
                     {video.thumbnail}

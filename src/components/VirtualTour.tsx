@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import Icon from '@/components/ui/icon';
@@ -74,12 +74,22 @@ const tours: Tour[] = [
 const VirtualTour = () => {
   const [selectedTour, setSelectedTour] = useState<Tour | null>(null);
   const [selectedCategory, setSelectedCategory] = useState<'all' | 'plane' | 'airport' | 'lounge'>('all');
+  const [isPremium, setIsPremium] = useState(false);
+
+  useEffect(() => {
+    const premium = localStorage.getItem('isPremium') === 'true';
+    setIsPremium(premium);
+  }, []);
 
   const filteredTours = selectedCategory === 'all' 
     ? tours 
     : tours.filter(t => t.category === selectedCategory);
 
   const handleStartTour = (tour: Tour) => {
+    if (!isPremium) {
+      toast.error('👑 Виртуальные туры доступны только для Premium-пользователей');
+      return;
+    }
     setSelectedTour(tour);
     toast.success('Запуск виртуального тура...');
   };
@@ -88,11 +98,13 @@ const VirtualTour = () => {
     <section id="virtual-tour" className="py-20 bg-muted/30">
       <div className="container mx-auto px-6">
         <div className="text-center mb-12">
-          <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
+          <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4 flex items-center justify-center gap-3">
+            {isPremium && <span className="text-3xl">👑</span>}
             Виртуальные туры 360°
+            {isPremium && <span className="text-sm bg-gradient-to-r from-yellow-400 via-amber-500 to-yellow-400 text-black px-3 py-1 rounded-full">Premium</span>}
           </h2>
           <p className="text-muted-foreground text-lg">
-            Изучите наши самолёты и аэропорты не выходя из дома
+            {isPremium ? 'Изучите наши самолёты и аэропорты не выходя из дома' : 'Premium-контент: виртуальные 3D-туры по самолётам и аэропортам'}
           </p>
         </div>
 
@@ -121,8 +133,16 @@ const VirtualTour = () => {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {filteredTours.map((tour) => (
-              <Card key={tour.id} className="group hover:shadow-xl transition-all cursor-pointer">
-                <CardContent className="p-0">
+              <Card key={tour.id} className={`group hover:shadow-xl transition-all cursor-pointer ${!isPremium ? 'opacity-60' : ''}`}>
+                <CardContent className="p-0 relative">
+                  {!isPremium && (
+                    <div className="absolute inset-0 bg-black/60 backdrop-blur-sm z-20 rounded-lg flex items-center justify-center">
+                      <div className="text-center p-4">
+                        <span className="text-4xl mb-2 block">🔒</span>
+                        <p className="text-white text-sm font-semibold">Premium</p>
+                      </div>
+                    </div>
+                  )}
                   <div 
                     onClick={() => handleStartTour(tour)}
                     className="relative aspect-video bg-gradient-to-br from-primary/20 to-secondary/20 flex items-center justify-center rounded-t-lg overflow-hidden"

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import Icon from '@/components/ui/icon';
@@ -36,6 +36,12 @@ const challenges = [
 
 const Gamification = () => {
   const [activeTab, setActiveTab] = useState<'achievements' | 'challenges' | 'leaderboard'>('achievements');
+  const [isPremium, setIsPremium] = useState(false);
+
+  useEffect(() => {
+    const premium = localStorage.getItem('isPremium') === 'true';
+    setIsPremium(premium);
+  }, []);
   
   const unlockedCount = achievements.filter(a => a.unlocked).length;
   const totalPoints = achievements.filter(a => a.unlocked).reduce((sum, a) => sum + parseInt(a.reward.match(/\d+/)?.[0] || '0'), 0);
@@ -44,15 +50,27 @@ const Gamification = () => {
     <section id="gamification" className="py-20 bg-gradient-to-b from-muted to-background">
       <div className="container mx-auto px-6">
         <div className="text-center mb-12">
-          <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
+          <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4 flex items-center justify-center gap-3">
+            {isPremium && <span className="text-3xl">👑</span>}
             Достижения и награды
+            {isPremium && <span className="text-sm bg-gradient-to-r from-yellow-400 via-amber-500 to-yellow-400 text-black px-3 py-1 rounded-full">Premium</span>}
           </h2>
           <p className="text-muted-foreground text-lg">
-            Выполняйте задания, открывайте достижения и зарабатывайте бонусы!
+            {isPremium ? 'Выполняйте задания, открывайте достижения и зарабатывайте бонусы!' : 'Premium-геймификация: игры, викторины и достижения'}
           </p>
+          {!isPremium && (
+            <div className="mt-6 p-6 bg-gradient-to-r from-yellow-500/10 to-amber-500/10 border-2 border-yellow-500/50 rounded-xl max-w-2xl mx-auto">
+              <span className="text-5xl block mb-3">👑</span>
+              <p className="text-lg font-semibold mb-2">Только для Premium-пользователей</p>
+              <p className="text-sm text-muted-foreground mb-4">Геймификация и достижения доступны в Premium-версии</p>
+              <Button className="bg-gradient-to-r from-yellow-400 via-amber-500 to-yellow-400 text-black hover:from-yellow-500 hover:via-amber-600 hover:to-yellow-500">
+                Активировать Premium
+              </Button>
+            </div>
+          )}
         </div>
 
-        <div className="max-w-6xl mx-auto mb-8">
+        {isPremium && <div className="max-w-6xl mx-auto mb-8">
           <div className="grid md:grid-cols-3 gap-6 mb-8">
             <Card>
               <CardContent className="p-6 text-center">
@@ -277,7 +295,7 @@ const Gamification = () => {
               </CardContent>
             </Card>
           )}
-        </div>
+        </div>}
       </div>
     </section>
   );

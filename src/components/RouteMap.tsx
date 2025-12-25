@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import Icon from '@/components/ui/icon';
 import { Button } from '@/components/ui/button';
@@ -40,6 +40,12 @@ const routes: Route[] = [
 const RouteMap = () => {
   const [selectedAirport, setSelectedAirport] = useState<string | null>(null);
   const [hoveredRoute, setHoveredRoute] = useState<string | null>(null);
+  const [isPremium, setIsPremium] = useState(false);
+
+  useEffect(() => {
+    const premium = localStorage.getItem('isPremium') === 'true';
+    setIsPremium(premium);
+  }, []);
 
   const getAirportById = (id: string) => airports.find(a => a.id === id);
 
@@ -48,12 +54,52 @@ const RouteMap = () => {
     return route.from === selectedAirport || route.to === selectedAirport;
   };
 
+  if (!isPremium) {
+    return (
+      <section id="route-map" className="py-20 bg-background">
+        <div className="container mx-auto px-6">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
+              Карта маршрутов
+            </h2>
+            <p className="text-muted-foreground text-lg">
+              Интерактивная карта полётов Leviks Air по России
+            </p>
+          </div>
+          <div className="max-w-4xl mx-auto">
+            <Card className="overflow-hidden border-2 border-yellow-500/50 relative">
+              <div className="absolute inset-0 bg-gradient-to-br from-yellow-500/10 to-amber-500/10 backdrop-blur-sm z-10 flex items-center justify-center">
+                <div className="text-center p-8">
+                  <span className="text-6xl mb-4 block">👑</span>
+                  <h3 className="text-2xl font-bold mb-3 bg-gradient-to-r from-yellow-400 via-amber-500 to-yellow-400 bg-clip-text text-transparent">
+                    Premium контент
+                  </h3>
+                  <p className="text-muted-foreground mb-4">
+                    Интерактивная карта маршрутов доступна только для Premium-пользователей
+                  </p>
+                  <Button className="bg-gradient-to-r from-yellow-400 via-amber-500 to-yellow-400 text-black hover:from-yellow-500 hover:via-amber-600 hover:to-yellow-500">
+                    Активировать Premium
+                  </Button>
+                </div>
+              </div>
+              <CardContent className="p-8 blur-sm">
+                <div className="bg-muted/50 rounded-lg h-[400px]"></div>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </section>
+    );
+  }
+
   return (
     <section id="route-map" className="py-20 bg-background">
       <div className="container mx-auto px-6">
         <div className="text-center mb-12">
-          <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
+          <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4 flex items-center justify-center gap-3">
+            <span className="text-3xl">👑</span>
             Карта маршрутов
+            <span className="text-sm bg-gradient-to-r from-yellow-400 via-amber-500 to-yellow-400 text-black px-3 py-1 rounded-full">Premium</span>
           </h2>
           <p className="text-muted-foreground text-lg">
             Интерактивная карта полётов Leviks Air по России
