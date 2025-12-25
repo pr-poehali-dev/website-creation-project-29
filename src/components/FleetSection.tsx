@@ -5,56 +5,56 @@ const FleetSection = () => {
   const fleet = [
     {
       name: 'Airbus A350-900',
-      image: 'https://cdn.poehali.dev/projects/fa174cc1-5b97-4175-973a-f9bea28b014a/files/1c0dc068-5527-4032-bb2b-9f9972256adb.jpg',
+      image: 'https://cdn.poehali.dev/projects/fa174cc1-5b97-4175-973a-f9bea28b014a/files/96c0c2db-6b73-4d15-9aa2-f410723daf6a.jpg',
       passengers: 325,
       range: '15 000 км',
       speed: '945 км/ч'
     },
     {
       name: 'Airbus A330-300',
-      image: 'https://cdn.poehali.dev/projects/fa174cc1-5b97-4175-973a-f9bea28b014a/files/ab9b1576-48eb-42b3-8f4c-f4e920bd85a6.jpg',
+      image: 'https://cdn.poehali.dev/projects/fa174cc1-5b97-4175-973a-f9bea28b014a/files/75ba8ba7-8ca5-4c17-b58b-4a77d7ba18db.jpg',
       passengers: 296,
       range: '11 750 км',
       speed: '871 км/ч'
     },
     {
       name: 'Airbus A321',
-      image: 'https://cdn.poehali.dev/projects/fa174cc1-5b97-4175-973a-f9bea28b014a/files/0f704c22-2683-4f26-b1a6-bcbbd165c073.jpg',
+      image: 'https://cdn.poehali.dev/projects/fa174cc1-5b97-4175-973a-f9bea28b014a/files/4b0edfe9-da06-4d3e-93a6-adf906d9aaf3.jpg',
       passengers: 183,
       range: '5 950 км',
       speed: '840 км/ч'
     },
     {
       name: 'Airbus A320',
-      image: 'https://cdn.poehali.dev/projects/fa174cc1-5b97-4175-973a-f9bea28b014a/files/f99b5ee0-3ad7-49b3-b03c-ccaa1a0bf98b.jpg',
+      image: 'https://cdn.poehali.dev/projects/fa174cc1-5b97-4175-973a-f9bea28b014a/files/2957c27d-33f0-46c1-ac64-17c3f6f32acb.jpg',
       passengers: 158,
       range: '6 100 км',
       speed: '840 км/ч'
     },
     {
       name: 'Boeing 777-300ER',
-      image: 'https://cdn.poehali.dev/projects/fa174cc1-5b97-4175-973a-f9bea28b014a/files/1c0dc068-5527-4032-bb2b-9f9972256adb.jpg',
+      image: 'https://cdn.poehali.dev/projects/fa174cc1-5b97-4175-973a-f9bea28b014a/files/9db24123-3158-4f30-98d3-1a7636b7442e.jpg',
       passengers: 402,
       range: '13 650 км',
       speed: '905 км/ч'
     },
     {
       name: 'Boeing 737-800',
-      image: 'https://cdn.poehali.dev/projects/fa174cc1-5b97-4175-973a-f9bea28b014a/files/ab9b1576-48eb-42b3-8f4c-f4e920bd85a6.jpg',
+      image: 'https://cdn.poehali.dev/projects/fa174cc1-5b97-4175-973a-f9bea28b014a/files/c3146b74-e19f-48df-9bde-2746f7cd1f1b.jpg',
       passengers: 158,
       range: '5 765 км',
       speed: '842 км/ч'
     },
     {
       name: 'Sukhoi Superjet 100',
-      image: 'https://cdn.poehali.dev/projects/fa174cc1-5b97-4175-973a-f9bea28b014a/files/0f704c22-2683-4f26-b1a6-bcbbd165c073.jpg',
+      image: 'https://cdn.poehali.dev/projects/fa174cc1-5b97-4175-973a-f9bea28b014a/files/c498fd09-0de3-426f-9542-3803b3806333.jpg',
       passengers: 87,
       range: '4 578 км',
       speed: '830 км/ч'
     },
     {
       name: 'Airbus A319',
-      image: 'https://cdn.poehali.dev/projects/fa174cc1-5b97-4175-973a-f9bea28b014a/files/f99b5ee0-3ad7-49b3-b03c-ccaa1a0bf98b.jpg',
+      image: 'https://cdn.poehali.dev/projects/fa174cc1-5b97-4175-973a-f9bea28b014a/files/e0b19ee2-d4ed-453b-98f4-c4e0756527fd.jpg',
       passengers: 128,
       range: '6 850 км',
       speed: '840 км/ч'
