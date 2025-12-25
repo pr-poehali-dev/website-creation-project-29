@@ -12,6 +12,7 @@ interface Tour {
   category: 'plane' | 'airport' | 'lounge';
   duration: string;
   views: number;
+  videoUrl: string;
 }
 
 const tours: Tour[] = [
@@ -22,7 +23,8 @@ const tours: Tour[] = [
     thumbnail: '✈️',
     category: 'plane',
     duration: '5 мин',
-    views: 12450
+    views: 12450,
+    videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ'
   },
   {
     id: '2',
@@ -31,7 +33,8 @@ const tours: Tour[] = [
     thumbnail: '🛫',
     category: 'plane',
     duration: '7 мин',
-    views: 8920
+    views: 8920,
+    videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ'
   },
   {
     id: '3',
@@ -40,7 +43,8 @@ const tours: Tour[] = [
     thumbnail: '🏢',
     category: 'airport',
     duration: '12 мин',
-    views: 15670
+    views: 15670,
+    videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ'
   },
   {
     id: '4',
@@ -49,7 +53,8 @@ const tours: Tour[] = [
     thumbnail: '🛋️',
     category: 'lounge',
     duration: '8 мин',
-    views: 6340
+    views: 6340,
+    videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ'
   },
   {
     id: '5',
@@ -58,7 +63,8 @@ const tours: Tour[] = [
     thumbnail: '👨‍✈️',
     category: 'plane',
     duration: '10 мин',
-    views: 23890
+    views: 23890,
+    videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ'
   },
   {
     id: '6',
@@ -67,7 +73,8 @@ const tours: Tour[] = [
     thumbnail: '🍽️',
     category: 'plane',
     duration: '6 мин',
-    views: 9120
+    views: 9120,
+    videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ'
   }
 ];
 
@@ -211,24 +218,17 @@ const VirtualTour = () => {
                 </div>
               </CardHeader>
               <CardContent>
-                <div className="aspect-video bg-gradient-to-br from-primary/30 to-secondary/30 rounded-lg flex items-center justify-center mb-6">
-                  <div className="text-center">
-                    <div className="text-9xl mb-6">{selectedTour.thumbnail}</div>
-                    <p className="text-2xl font-bold mb-6 text-foreground">Виртуальный тур 360°</p>
-                    <div className="flex gap-4 justify-center mb-4">
-                      <Button size="lg">
-                        <Icon name="Play" className="mr-2" size={20} />
-                        Начать экскурсию
-                      </Button>
-                      <Button size="lg" variant="outline">
-                        <Icon name="Glasses" className="mr-2" size={20} />
-                        VR режим
-                      </Button>
-                    </div>
-                    <p className="text-muted-foreground">
-                      Используйте мышь для осмотра пространства в 360°
-                    </p>
-                  </div>
+                <div className="aspect-video bg-black rounded-lg overflow-hidden mb-6">
+                  <iframe
+                    width="100%"
+                    height="100%"
+                    src={selectedTour.videoUrl}
+                    title={selectedTour.title}
+                    frameBorder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                    className="w-full h-full"
+                  ></iframe>
                 </div>
                 
                 <div className="grid md:grid-cols-3 gap-4 mb-4">
