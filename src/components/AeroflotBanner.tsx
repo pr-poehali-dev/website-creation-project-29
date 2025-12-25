@@ -4,16 +4,22 @@ import Icon from '@/components/ui/icon';
 
 const AeroflotBanner = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const [isPremium, setIsPremium] = useState(false);
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsVisible(true);
-    }, 3000);
+    const premium = localStorage.getItem('isPremium') === 'true';
+    setIsPremium(premium);
 
-    return () => clearTimeout(timer);
+    if (!premium) {
+      const timer = setTimeout(() => {
+        setIsVisible(true);
+      }, 3000);
+
+      return () => clearTimeout(timer);
+    }
   }, []);
 
-  if (!isVisible) return null;
+  if (!isVisible || isPremium) return null;
 
   return (
     <div className="fixed bottom-2 right-2 md:bottom-8 md:right-8 z-50 animate-in slide-in-from-bottom-5 duration-500">

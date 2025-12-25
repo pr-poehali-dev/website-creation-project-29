@@ -25,6 +25,21 @@ import TravelGuide from '@/components/TravelGuide';
 import EcoInitiatives from '@/components/EcoInitiatives';
 import AirportMap from '@/components/AirportMap';
 import PriceCalculator from '@/components/PriceCalculator';
+import LiveFlightMap from '@/components/LiveFlightMap';
+import LoyaltyProgram from '@/components/LoyaltyProgram';
+import AirportCatalog from '@/components/AirportCatalog';
+import LiveConsultation from '@/components/LiveConsultation';
+import NewsSection from '@/components/NewsSection';
+import BaggageInfo from '@/components/BaggageInfo';
+import ExtendedFAQ from '@/components/ExtendedFAQ';
+import ServiceCalculator from '@/components/ServiceCalculator';
+import OfficeContacts from '@/components/OfficeContacts';
+import TravelTips from '@/components/TravelTips';
+import SafetyVideos from '@/components/SafetyVideos';
+import NewsletterSubscription from '@/components/NewsletterSubscription';
+import AdditionalServices from '@/components/AdditionalServices';
+import ServiceClasses from '@/components/ServiceClasses';
+import RefundPolicy from '@/components/RefundPolicy';
 
 import AeroflotBanner from '@/components/AeroflotBanner';
 import HackerAttack from '@/components/HackerAttack';
@@ -94,53 +109,55 @@ const Index = () => {
       <NewYearMagic />
       <Snowfall />
       
-      <div className={`fixed top-0 w-full z-[51] py-2 md:py-2 ${isPremium ? 'bg-gradient-to-r from-yellow-500 via-amber-500 to-yellow-500' : 'bg-gradient-to-r from-red-600 via-blue-600 to-red-600'}`}>
-        <div className="container mx-auto px-3 md:px-6 flex items-center justify-center gap-2 md:gap-3 flex-wrap">
-          <span className="text-white text-xs md:text-sm font-medium hidden sm:inline">🎄 Купить билеты:</span>
-          <Button
-            size="sm"
-            variant="secondary"
-            onClick={() => window.open('https://www.aeroflot.ru', '_blank')}
-            className="bg-white/90 hover:bg-white text-red-600 font-semibold text-[10px] md:text-xs px-2 md:px-3 py-1 h-auto"
-          >
-            ✈️ Аэрофлот
-          </Button>
-          <Button
-            size="sm"
-            variant="secondary"
-            onClick={() => window.open('https://www.rossiya-airlines.com', '_blank')}
-            className="bg-white/90 hover:bg-white text-blue-600 font-semibold text-[10px] md:text-xs px-2 md:px-3 py-1 h-auto"
-          >
-            ✈️ Россия
-          </Button>
-          <Button
-            size="sm"
-            variant="secondary"
-            onClick={() => window.open('https://www.pobeda.aero', '_blank')}
-            className="bg-white/90 hover:bg-white text-green-600 font-semibold text-[10px] md:text-xs px-2 md:px-3 py-1 h-auto"
-          >
-            ✈️ Победа
-          </Button>
-          <Button
-            size="sm"
-            variant="secondary"
-            onClick={() => window.open('https://www.utair.ru', '_blank')}
-            className="bg-white/90 hover:bg-white text-orange-600 font-semibold text-[10px] md:text-xs px-2 md:px-3 py-1 h-auto"
-          >
-            ✈️ UTair
-          </Button>
-          <Button
-            size="sm"
-            variant="secondary"
-            onClick={() => window.open('https://www.yamal.aero', '_blank')}
-            className="bg-white/90 hover:bg-white text-purple-600 font-semibold text-[10px] md:text-xs px-2 md:px-3 py-1 h-auto"
-          >
-            ✈️ Ямал
-          </Button>
+      {!isPremium && (
+        <div className="fixed top-0 w-full z-[51] py-2 md:py-2 bg-gradient-to-r from-red-600 via-blue-600 to-red-600">
+          <div className="container mx-auto px-3 md:px-6 flex items-center justify-center gap-2 md:gap-3 flex-wrap">
+            <span className="text-white text-xs md:text-sm font-medium hidden sm:inline">🎄 Купить билеты:</span>
+            <Button
+              size="sm"
+              variant="secondary"
+              onClick={() => window.open('https://www.aeroflot.ru', '_blank')}
+              className="bg-white/90 hover:bg-white text-red-600 font-semibold text-[10px] md:text-xs px-2 md:px-3 py-1 h-auto"
+            >
+              ✈️ Аэрофлот
+            </Button>
+            <Button
+              size="sm"
+              variant="secondary"
+              onClick={() => window.open('https://www.rossiya-airlines.com', '_blank')}
+              className="bg-white/90 hover:bg-white text-blue-600 font-semibold text-[10px] md:text-xs px-2 md:px-3 py-1 h-auto"
+            >
+              ✈️ Россия
+            </Button>
+            <Button
+              size="sm"
+              variant="secondary"
+              onClick={() => window.open('https://www.pobeda.aero', '_blank')}
+              className="bg-white/90 hover:bg-white text-green-600 font-semibold text-[10px] md:text-xs px-2 md:px-3 py-1 h-auto"
+            >
+              ✈️ Победа
+            </Button>
+            <Button
+              size="sm"
+              variant="secondary"
+              onClick={() => window.open('https://www.utair.ru', '_blank')}
+              className="bg-white/90 hover:bg-white text-orange-600 font-semibold text-[10px] md:text-xs px-2 md:px-3 py-1 h-auto"
+            >
+              ✈️ UTair
+            </Button>
+            <Button
+              size="sm"
+              variant="secondary"
+              onClick={() => window.open('https://www.yamal.aero', '_blank')}
+              className="bg-white/90 hover:bg-white text-purple-600 font-semibold text-[10px] md:text-xs px-2 md:px-3 py-1 h-auto"
+            >
+              ✈️ Ямал
+            </Button>
+          </div>
         </div>
-      </div>
+      )}
 
-      <nav className={`fixed top-[52px] w-full z-50 backdrop-blur-md border-b border-border ${isPremium ? 'bg-gradient-to-r from-yellow-500/20 via-amber-500/20 to-yellow-500/20' : 'bg-background/80'}`}>
+      <nav className={`fixed ${isPremium ? 'top-0' : 'top-[52px]'} w-full z-50 backdrop-blur-md border-b border-border ${isPremium ? 'bg-gradient-to-r from-yellow-500/20 via-amber-500/20 to-yellow-500/20' : 'bg-background/80'}`}>
         <div className="container mx-auto px-3 md:px-6 py-3 md:py-4 flex items-center justify-between">
           <div className="flex items-center gap-2 md:gap-3">
             {isPremium && <span className="text-2xl md:text-3xl animate-pulse">👑</span>}
@@ -201,28 +218,30 @@ const Index = () => {
         </div>
       </nav>
 
-      <a
-        href="https://www.aeroflot.ru/ru-ru/afl_bonus"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="block pt-[80px] md:pt-[90px] pb-3 md:pb-4"
-      >
-        <div className="container mx-auto px-4 md:px-6">
-          <div className="relative overflow-hidden rounded-lg md:rounded-xl shadow-lg group cursor-pointer max-w-6xl mx-auto">
-            <img
-              src="https://cdn.poehali.dev/projects/fa174cc1-5b97-4175-973a-f9bea28b014a/files/2bd6c9b6-6304-4746-91b0-6a13dfb362d3.jpg"
-              alt="Аэрофлот Бонус"
-              className="w-full h-20 md:h-32 object-cover group-hover:scale-105 transition-transform duration-500"
-            />
-            <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-secondary/20 group-hover:opacity-0 transition-opacity duration-300"></div>
-            <div className="absolute bottom-1 right-2 md:bottom-2 md:right-3 bg-primary text-primary-foreground px-2 py-1 md:px-3 md:py-1.5 rounded-full text-[10px] md:text-xs font-semibold">
-              Узнать больше →
+      {!isPremium && (
+        <a
+          href="https://www.aeroflot.ru/ru-ru/afl_bonus"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="block pt-[110px] md:pt-[120px] pb-3 md:pb-4"
+        >
+          <div className="container mx-auto px-4 md:px-6">
+            <div className="relative overflow-hidden rounded-lg md:rounded-xl shadow-lg group cursor-pointer max-w-6xl mx-auto">
+              <img
+                src="https://cdn.poehali.dev/projects/fa174cc1-5b97-4175-973a-f9bea28b014a/files/2bd6c9b6-6304-4746-91b0-6a13dfb362d3.jpg"
+                alt="Аэрофлот Бонус"
+                className="w-full h-20 md:h-32 object-cover group-hover:scale-105 transition-transform duration-500"
+              />
+              <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-secondary/20 group-hover:opacity-0 transition-opacity duration-300"></div>
+              <div className="absolute bottom-1 right-2 md:bottom-2 md:right-3 bg-primary text-primary-foreground px-2 py-1 md:px-3 md:py-1.5 rounded-full text-[10px] md:text-xs font-semibold">
+                Узнать больше →
+              </div>
             </div>
           </div>
-        </div>
-      </a>
+        </a>
+      )}
 
-      <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden pt-[60px] md:pt-[80px]">
+      <section id="home" className={`min-h-screen flex items-center justify-center relative overflow-hidden ${isPremium ? 'pt-[80px] md:pt-[100px]' : 'pt-[120px] md:pt-[140px]'}`}>
         <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-background to-secondary/20"></div>
         <div className="absolute inset-0 flex items-center justify-center opacity-10">
           <img 
@@ -378,6 +397,46 @@ const Index = () => {
         <p className="text-muted-foreground mb-6">Зарабатывайте бонусы за активность</p>
       </div>
       <Gamification />
+
+      <div className="container mx-auto px-6 py-8">
+        <h3 className="text-3xl font-bold text-foreground mb-2">🗺️ Карта полётов в реальном времени</h3>
+        <p className="text-muted-foreground mb-6">Отслеживайте текущее местоположение наших самолётов</p>
+      </div>
+      <div className="container mx-auto px-6 pb-8">
+        <LiveFlightMap />
+      </div>
+
+      <div className="container mx-auto px-6 py-8">
+        <h3 className="text-3xl font-bold text-foreground mb-2">🎁 Программа лояльности</h3>
+        <p className="text-muted-foreground mb-6">Накапливайте мили и получайте привилегии</p>
+      </div>
+      <div className="container mx-auto px-6 pb-8">
+        <LoyaltyProgram />
+      </div>
+
+      <div className="container mx-auto px-6 py-8">
+        <h3 className="text-3xl font-bold text-foreground mb-2">✈️ Каталог аэропортов</h3>
+        <p className="text-muted-foreground mb-6">Информация о терминалах, услугах и транспорте</p>
+      </div>
+      <div className="container mx-auto px-6 pb-8">
+        <AirportCatalog />
+      </div>
+
+      <div className="container mx-auto px-6 py-8">
+        <h3 className="text-3xl font-bold text-foreground mb-2">📰 Новости и пресс-релизы</h3>
+        <p className="text-muted-foreground mb-6">Последние новости авиакомпании</p>
+      </div>
+      <div className="container mx-auto px-6 pb-8">
+        <NewsSection />
+      </div>
+
+      <div className="container mx-auto px-6 py-8">
+        <h3 className="text-3xl font-bold text-foreground mb-2">🛂 Классы обслуживания</h3>
+        <p className="text-muted-foreground mb-6">Выберите комфорт для вашего полёта</p>
+      </div>
+      <div className="container mx-auto px-6 pb-8">
+        <ServiceClasses />
+      </div>
       
       <section id="help" className="py-12 bg-muted/20">
         <div className="container mx-auto px-6">
@@ -392,6 +451,82 @@ const Index = () => {
         </div>
       </section>
       
+      <div className="container mx-auto px-6 py-8">
+        <h3 className="text-3xl font-bold text-foreground mb-2">💬 Онлайн-консультация</h3>
+        <p className="text-muted-foreground mb-6">Получите помощь в чате или по видеосвязи</p>
+      </div>
+      <div className="container mx-auto px-6 pb-8">
+        <LiveConsultation />
+      </div>
+
+      <div className="container mx-auto px-6 py-8">
+        <h3 className="text-3xl font-bold text-foreground mb-2">🧳 Правила провоза багажа</h3>
+        <p className="text-muted-foreground mb-6">Подробная информация о багаже и ручной клади</p>
+      </div>
+      <div className="container mx-auto px-6 pb-8">
+        <BaggageInfo />
+      </div>
+
+      <div className="container mx-auto px-6 py-8">
+        <h3 className="text-3xl font-bold text-foreground mb-2">❓ Часто задаваемые вопросы</h3>
+        <p className="text-muted-foreground mb-6">Ответы на все ваши вопросы о перелётах</p>
+      </div>
+      <div className="container mx-auto px-6 pb-8">
+        <ExtendedFAQ />
+      </div>
+
+      <div className="container mx-auto px-6 py-8">
+        <h3 className="text-3xl font-bold text-foreground mb-2">🧮 Калькулятор услуг</h3>
+        <p className="text-muted-foreground mb-6">Рассчитайте стоимость дополнительных услуг</p>
+      </div>
+      <div className="container mx-auto px-6 pb-8">
+        <ServiceCalculator />
+      </div>
+
+      <div className="container mx-auto px-6 py-8">
+        <h3 className="text-3xl font-bold text-foreground mb-2">🏢 Контакты офисов</h3>
+        <p className="text-muted-foreground mb-6">Адреса и телефоны наших представительств</p>
+      </div>
+      <div className="container mx-auto px-6 pb-8">
+        <OfficeContacts />
+      </div>
+
+      <div className="container mx-auto px-6 py-8">
+        <h3 className="text-3xl font-bold text-foreground mb-2">💡 Советы путешественникам</h3>
+        <p className="text-muted-foreground mb-6">Как подготовиться к перелёту</p>
+      </div>
+      <div className="container mx-auto px-6 pb-8">
+        <TravelTips />
+      </div>
+
+      <div className="container mx-auto px-6 py-8">
+        <h3 className="text-3xl font-bold text-foreground mb-2">📹 Видео о безопасности</h3>
+        <p className="text-muted-foreground mb-6">Правила поведения на борту</p>
+      </div>
+      <div className="container mx-auto px-6 pb-8">
+        <SafetyVideos />
+      </div>
+
+      <div className="container mx-auto px-6 py-8">
+        <h3 className="text-3xl font-bold text-foreground mb-2">🎫 Дополнительные услуги</h3>
+        <p className="text-muted-foreground mb-6">Аренда авто, отели, экскурсии и многое другое</p>
+      </div>
+      <div className="container mx-auto px-6 pb-8">
+        <AdditionalServices />
+      </div>
+
+      <div className="container mx-auto px-6 py-8">
+        <h3 className="text-3xl font-bold text-foreground mb-2">↩️ Условия возврата билетов</h3>
+        <p className="text-muted-foreground mb-6">Правила отмены и возврата средств</p>
+      </div>
+      <div className="container mx-auto px-6 pb-8">
+        <RefundPolicy />
+      </div>
+
+      <div className="container mx-auto px-6 py-8">
+        <NewsletterSubscription />
+      </div>
+
       <div className="container mx-auto px-6 py-8">
         <h3 className="text-3xl font-bold text-foreground mb-2">📚 Гид путешественника</h3>
         <p className="text-muted-foreground mb-6">Полезные советы для комфортного полёта</p>
