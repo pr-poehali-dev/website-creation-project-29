@@ -238,11 +238,35 @@ const Index = () => {
         </div>
       </section>
       
+      <div className="container mx-auto px-6 py-8">
+        <h3 className="text-3xl font-bold text-foreground mb-2">🎫 Поиск и бронирование</h3>
+        <p className="text-muted-foreground mb-6">Найдите и забронируйте билеты на удобные для вас рейсы</p>
+      </div>
       <BookingSection />
+      <div className="container mx-auto px-6 py-8">
+        <h3 className="text-3xl font-bold text-foreground mb-2">💰 Калькулятор стоимости</h3>
+        <p className="text-muted-foreground mb-6">Рассчитайте точную стоимость вашего путешествия</p>
+      </div>
       <PriceCalculator />
+      <div className="container mx-auto px-6 py-8">
+        <h3 className="text-3xl font-bold text-foreground mb-2">📡 Статус рейса</h3>
+        <p className="text-muted-foreground mb-6">Отслеживайте статус вашего рейса в реальном времени</p>
+      </div>
       <FlightStatus />
+      <div className="container mx-auto px-6 py-8">
+        <h3 className="text-3xl font-bold text-foreground mb-2">🎁 Дополнительные услуги</h3>
+        <p className="text-muted-foreground mb-6">Выбор места, питание, страхование и другие сервисы</p>
+      </div>
       <ServicesSection />
+      <div className="container mx-auto px-6 py-8">
+        <h3 className="text-3xl font-bold text-foreground mb-2">🌍 Популярные маршруты</h3>
+        <p className="text-muted-foreground mb-6">Самые востребованные направления наших рейсов</p>
+      </div>
       <RoutesSection />
+      <div className="container mx-auto px-6 py-8">
+        <h3 className="text-3xl font-bold text-foreground mb-2">🗺️ Карта маршрутов</h3>
+        <p className="text-muted-foreground mb-6">Интерактивная карта всех направлений Leviks Air</p>
+      </div>
       <RouteMap />
       
       <section id="about" className="py-12 bg-muted/20">
@@ -258,12 +282,40 @@ const Index = () => {
         </div>
       </section>
       
+      <div className="container mx-auto px-6 py-8">
+        <h3 className="text-3xl font-bold text-foreground mb-2">✈️ Наш флот</h3>
+        <p className="text-muted-foreground mb-6">Современные самолёты для вашего комфорта</p>
+      </div>
       <FleetSection />
+      <div className="container mx-auto px-6 py-8">
+        <h3 className="text-3xl font-bold text-foreground mb-2">🎥 Виртуальные туры</h3>
+        <p className="text-muted-foreground mb-6">Изучите салоны и аэропорты в формате 360°</p>
+      </div>
       <VirtualTour />
+      <div className="container mx-auto px-6 py-8">
+        <h3 className="text-3xl font-bold text-foreground mb-2">📖 Наша история</h3>
+        <p className="text-muted-foreground mb-6">Путь развития авиакомпании Leviks Air</p>
+      </div>
       <HistorySection />
+      <div className="container mx-auto px-6 py-8">
+        <h3 className="text-3xl font-bold text-foreground mb-2">🌱 Экологические инициативы</h3>
+        <p className="text-muted-foreground mb-6">Наш вклад в защиту окружающей среды</p>
+      </div>
       <EcoInitiatives />
+      <div className="container mx-auto px-6 py-8">
+        <h3 className="text-3xl font-bold text-foreground mb-2">⭐ Отзывы пассажиров</h3>
+        <p className="text-muted-foreground mb-6">Что говорят наши клиенты о полётах</p>
+      </div>
       <ReviewsSection />
+      <div className="container mx-auto px-6 py-8">
+        <h3 className="text-3xl font-bold text-foreground mb-2">📹 Видеогалерея</h3>
+        <p className="text-muted-foreground mb-6">Смотрите видео о наших самолётах и сервисе</p>
+      </div>
       <VideoGallery />
+      <div className="container mx-auto px-6 py-8">
+        <h3 className="text-3xl font-bold text-foreground mb-2">🏆 Достижения и награды</h3>
+        <p className="text-muted-foreground mb-6">Зарабатывайте бонусы за активность</p>
+      </div>
       <Gamification />
       
       <section id="help" className="py-12 bg-muted/20">
@@ -279,11 +331,31 @@ const Index = () => {
         </div>
       </section>
       
+      <div className="container mx-auto px-6 py-8">
+        <h3 className="text-3xl font-bold text-foreground mb-2">📚 Гид путешественника</h3>
+        <p className="text-muted-foreground mb-6">Полезные советы для комфортного полёта</p>
+      </div>
       <TravelGuide />
+      <div className="container mx-auto px-6 py-8">
+        <h3 className="text-3xl font-bold text-foreground mb-2">🗺️ Карта аэропорта</h3>
+        <p className="text-muted-foreground mb-6">Навигация по терминалам в интерактивном режиме</p>
+      </div>
       <AirportMap />
+      <div className="container mx-auto px-6 py-8">
+        <h3 className="text-3xl font-bold text-foreground mb-2">❓ Частые вопросы</h3>
+        <p className="text-muted-foreground mb-6">Ответы на самые популярные вопросы</p>
+      </div>
       <FAQSection />
+      <div className="container mx-auto px-6 py-8">
+        <h3 className="text-3xl font-bold text-foreground mb-2">📱 Мы в соцсетях</h3>
+        <p className="text-muted-foreground mb-6">Следите за новостями и специальными предложениями</p>
+      </div>
       <SocialShare />
       
+      <div className="container mx-auto px-6 py-8">
+        <h3 className="text-3xl font-bold text-foreground mb-2">👤 Личный кабинет</h3>
+        <p className="text-muted-foreground mb-6">Управляйте бронированиями и участвуйте в программе лояльности</p>
+      </div>
       <UserProfile />
 
       <SupportChat />
