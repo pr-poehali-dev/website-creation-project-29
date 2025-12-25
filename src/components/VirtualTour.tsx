@@ -24,7 +24,7 @@ const tours: Tour[] = [
     category: 'plane',
     duration: '5 мин',
     views: 12450,
-    videoUrl: 'https://www.youtube.com/embed/videoseries?list=PLYu7z3I8tdEnmZbZiVeZqx_NmBFaGf2BV'
+    videoUrl: 'https://www.youtube.com/embed/hNHdC5m0rJM'
   },
   {
     id: '2',
@@ -34,7 +34,7 @@ const tours: Tour[] = [
     category: 'plane',
     duration: '7 мин',
     views: 8920,
-    videoUrl: 'https://www.youtube.com/embed/videoseries?list=PLYu7z3I8tdEnnMZbZiVeZ'
+    videoUrl: 'https://www.youtube.com/embed/CqYvHxTtwIo'
   },
   {
     id: '3',
@@ -44,7 +44,7 @@ const tours: Tour[] = [
     category: 'airport',
     duration: '12 мин',
     views: 15670,
-    videoUrl: 'https://www.youtube.com/embed/videoseries?list=PLYu7z3I8tdEnmMZbZiVeZq'
+    videoUrl: 'https://www.youtube.com/embed/qGVAyWhWIBk'
   },
   {
     id: '4',
@@ -54,7 +54,7 @@ const tours: Tour[] = [
     category: 'lounge',
     duration: '8 мин',
     views: 6340,
-    videoUrl: 'https://www.youtube.com/embed/videoseries?list=PLYu7z3I8tdEnmZbZiVeZx'
+    videoUrl: 'https://www.youtube.com/embed/B5FZg8ycO-U'
   },
   {
     id: '5',
@@ -64,7 +64,7 @@ const tours: Tour[] = [
     category: 'plane',
     duration: '10 мин',
     views: 23890,
-    videoUrl: 'https://www.youtube.com/embed/videoseries?list=PLYu7z3I8tdEnmZbZiVeZ'
+    videoUrl: 'https://www.youtube.com/embed/jVvt7hP5a-0'
   },
   {
     id: '6',
@@ -74,7 +74,7 @@ const tours: Tour[] = [
     category: 'plane',
     duration: '6 мин',
     views: 9120,
-    videoUrl: 'https://www.youtube.com/embed/videoseries?list=PLYu7z3I8tdEnmZbZiVeZqx'
+    videoUrl: 'https://www.youtube.com/embed/gSK1xrarLXI'
   }
 ];
 
