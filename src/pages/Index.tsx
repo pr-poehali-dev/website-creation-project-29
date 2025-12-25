@@ -18,6 +18,13 @@ import FAQSection from '@/components/FAQSection';
 import SupportChat from '@/components/SupportChat';
 import SocialShare from '@/components/SocialShare';
 import VideoGallery from '@/components/VideoGallery';
+import UserProfile from '@/components/UserProfile';
+import Gamification from '@/components/Gamification';
+import VirtualTour from '@/components/VirtualTour';
+import TravelGuide from '@/components/TravelGuide';
+import EcoInitiatives from '@/components/EcoInitiatives';
+import AirportMap from '@/components/AirportMap';
+import PriceCalculator from '@/components/PriceCalculator';
 
 import AeroflotBanner from '@/components/AeroflotBanner';
 import HackerAttack from '@/components/HackerAttack';
@@ -144,6 +151,14 @@ const Index = () => {
             >
               Флот
             </button>
+            <button
+              onClick={() => scrollToSection('profile')}
+              className={`text-xs md:text-sm font-medium transition-colors hover:text-primary whitespace-nowrap ${
+                activeSection === 'profile' ? 'text-primary' : 'text-muted-foreground'
+              }`}
+            >
+              Личный кабинет
+            </button>
             <SearchHeader onSearch={handleSearch} />
           </div>
         </div>
@@ -212,6 +227,13 @@ const Index = () => {
       <ReviewsSection />
       <VideoGallery />
       <FAQSection />
+      <UserProfile />
+      <Gamification />
+      <VirtualTour />
+      <TravelGuide />
+      <EcoInitiatives />
+      <AirportMap />
+      <PriceCalculator />
       <SocialShare />
 
       <SupportChat />
