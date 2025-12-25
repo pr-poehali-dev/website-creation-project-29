@@ -57,6 +57,10 @@ const Index = () => {
       localStorage.setItem('isPremium', 'true');
       setIsPremium(true);
       setShowPremiumModal(false);
+      
+      // Триггерим событие для всех компонентов
+      window.dispatchEvent(new Event('premiumActivated'));
+      
       toast.success('🎉 Премиум активирован! Добро пожаловать в элитный клуб!');
     } else {
       toast.error('❌ Неверный код активации');

@@ -35,8 +35,17 @@ const SupportChat = () => {
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const premium = localStorage.getItem('isPremium') === 'true';
-    setIsPremium(premium);
+    const checkPremium = () => {
+      const premium = localStorage.getItem('isPremium') === 'true';
+      setIsPremium(premium);
+    };
+    
+    checkPremium();
+    window.addEventListener('premiumActivated', checkPremium);
+    
+    return () => {
+      window.removeEventListener('premiumActivated', checkPremium);
+    };
   }, []);
 
   const scrollToBottom = () => {

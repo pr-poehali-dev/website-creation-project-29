@@ -100,8 +100,17 @@ const VideoGallery = () => {
   const [isPremium, setIsPremium] = useState(false);
 
   useEffect(() => {
-    const premium = localStorage.getItem('isPremium') === 'true';
-    setIsPremium(premium);
+    const checkPremium = () => {
+      const premium = localStorage.getItem('isPremium') === 'true';
+      setIsPremium(premium);
+    };
+    
+    checkPremium();
+    window.addEventListener('premiumActivated', checkPremium);
+    
+    return () => {
+      window.removeEventListener('premiumActivated', checkPremium);
+    };
   }, []);
   const [selectedVideo, setSelectedVideo] = useState<Video | null>(null);
 

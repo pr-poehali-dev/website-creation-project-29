@@ -14,15 +14,21 @@ const NewYearMagic = () => {
     audio.preload = 'none';
     audioRef.current = audio;
 
-    const premium = localStorage.getItem('isPremium') === 'true';
-    setIsPremium(premium);
+    const checkPremium = () => {
+      const premium = localStorage.getItem('isPremium') === 'true';
+      setIsPremium(premium);
+    };
     
     const unlocked = localStorage.getItem('snowmenUnlocked') === 'true';
     setSnowmenUnlocked(unlocked);
+    
+    checkPremium();
+    window.addEventListener('premiumActivated', checkPremium);
 
     return () => {
       audio.pause();
       audioRef.current = null;
+      window.removeEventListener('premiumActivated', checkPremium);
     };
   }, []);
 
