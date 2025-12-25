@@ -144,7 +144,7 @@ const ReviewsSection = () => {
                   value={newReview.name}
                   onChange={(e) => setNewReview({ ...newReview, name: e.target.value })}
                   placeholder="Иван Иванов"
-                  className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
+                  className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary bg-white text-black"
                 />
               </div>
 
@@ -155,7 +155,7 @@ const ReviewsSection = () => {
                   value={newReview.route}
                   onChange={(e) => setNewReview({ ...newReview, route: e.target.value })}
                   placeholder="Москва → Санкт-Петербург"
-                  className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
+                  className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary bg-white text-black"
                 />
               </div>
 
@@ -185,7 +185,7 @@ const ReviewsSection = () => {
                   onChange={(e) => setNewReview({ ...newReview, comment: e.target.value })}
                   placeholder="Поделитесь впечатлениями о полёте..."
                   rows={4}
-                  className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
+                  className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary bg-white text-black"
                 />
               </div>
 

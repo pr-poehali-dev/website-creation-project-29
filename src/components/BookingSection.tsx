@@ -95,7 +95,7 @@ const BookingSection = () => {
                   value={from}
                   onChange={(e) => setFrom(e.target.value)}
                   placeholder="Москва"
-                  className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
+                  className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary bg-white text-black"
                 />
               </div>
               <div>
@@ -105,7 +105,7 @@ const BookingSection = () => {
                   value={to}
                   onChange={(e) => setTo(e.target.value)}
                   placeholder="Санкт-Петербург"
-                  className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
+                  className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary bg-white text-black"
                 />
               </div>
             </div>
@@ -117,7 +117,7 @@ const BookingSection = () => {
                   type="date"
                   value={date}
                   onChange={(e) => setDate(e.target.value)}
-                  className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
+                  className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary bg-white text-black"
                 />
               </div>
               <div>
@@ -128,7 +128,7 @@ const BookingSection = () => {
                   max="9"
                   value={passengers}
                   onChange={(e) => setPassengers(Number(e.target.value))}
-                  className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
+                  className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary bg-white text-black"
                 />
               </div>
               <div>
@@ -136,7 +136,7 @@ const BookingSection = () => {
                 <select
                   value={selectedClass}
                   onChange={(e) => setSelectedClass(e.target.value as any)}
-                  className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
+                  className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary bg-white text-black"
                 >
                   <option value="economy">Эконом</option>
                   <option value="business">Бизнес</option>
