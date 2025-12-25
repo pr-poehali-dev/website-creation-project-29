@@ -20,7 +20,7 @@ import SocialShare from '@/components/SocialShare';
 import VideoGallery from '@/components/VideoGallery';
 import UserProfile from '@/components/UserProfile';
 import Gamification from '@/components/Gamification';
-import VirtualTour from '@/components/VirtualTour';
+
 import TravelGuide from '@/components/TravelGuide';
 import EcoInitiatives from '@/components/EcoInitiatives';
 import AirportMap from '@/components/AirportMap';
@@ -352,11 +352,7 @@ const Index = () => {
         <p className="text-muted-foreground mb-6">Современные самолёты для вашего комфорта</p>
       </div>
       <FleetSection />
-      <div className="container mx-auto px-6 py-8">
-        <h3 className="text-3xl font-bold text-foreground mb-2">🎥 Виртуальные туры</h3>
-        <p className="text-muted-foreground mb-6">Изучите салоны и аэропорты в формате 360°</p>
-      </div>
-      <VirtualTour />
+
       <div className="container mx-auto px-6 py-8">
         <h3 className="text-3xl font-bold text-foreground mb-2">📖 Наша история</h3>
         <p className="text-muted-foreground mb-6">Путь развития авиакомпании Leviks Air</p>
