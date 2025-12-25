@@ -166,6 +166,13 @@ const Index = () => {
 
       <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden pt-[120px] md:pt-[116px]">
         <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-background to-secondary/20"></div>
+        <div className="absolute inset-0 flex items-center justify-center opacity-10">
+          <img 
+            src="https://cdn.poehali.dev/files/c33c7a8dbf111f0bccbeade2fa062be_1 (1).jpeg" 
+            alt="Leviks Air Logo" 
+            className="w-full max-w-2xl h-auto object-contain"
+          />
+        </div>
         <div className="absolute inset-0">
           <div className="absolute top-1/4 left-1/4 w-48 h-48 md:w-96 md:h-96 bg-primary/10 rounded-full blur-3xl animate-pulse"></div>
           <div className="absolute bottom-1/4 right-1/4 w-48 h-48 md:w-96 md:h-96 bg-secondary/10 rounded-full blur-3xl delay-1000"></div>
