@@ -36,15 +36,30 @@ const Index = () => {
   const [planeClicks, setPlaneClicks] = useState(0);
   const [showSecretGame, setShowSecretGame] = useState(false);
   const [snowmenUnlocked, setSnowmenUnlocked] = useState(false);
+  const [isPremium, setIsPremium] = useState(false);
+  const [showPremiumModal, setShowPremiumModal] = useState(false);
 
   useEffect(() => {
     const unlocked = localStorage.getItem('snowmenUnlocked') === 'true';
     setSnowmenUnlocked(unlocked);
+    const premium = localStorage.getItem('isPremium') === 'true';
+    setIsPremium(premium);
   }, []);
 
   const handleGameWin = () => {
     localStorage.setItem('snowmenUnlocked', 'true');
     setSnowmenUnlocked(true);
+  };
+
+  const handlePremiumActivation = (code: string) => {
+    if (code === '454564') {
+      localStorage.setItem('isPremium', 'true');
+      setIsPremium(true);
+      setShowPremiumModal(false);
+      toast.success('🎉 Премиум активирован! Добро пожаловать в элитный клуб!');
+    } else {
+      toast.error('❌ Неверный код активации');
+    }
   };
 
   const scrollToSection = (section: string) => {
@@ -111,11 +126,12 @@ const Index = () => {
         </div>
       </div>
 
-      <nav className="fixed top-[52px] w-full z-50 bg-background/80 backdrop-blur-md border-b border-border">
+      <nav className={`fixed top-[52px] w-full z-50 backdrop-blur-md border-b border-border ${isPremium ? 'bg-gradient-to-r from-yellow-500/20 via-amber-500/20 to-yellow-500/20' : 'bg-background/80'}`}>
         <div className="container mx-auto px-3 md:px-6 py-3 md:py-4 flex items-center justify-between">
           <div className="flex items-center gap-2 md:gap-3">
-            <Icon name="Plane" className="text-primary" size={24} />
-            <span className="text-lg md:text-2xl font-bold text-foreground">Leviks Air</span>
+            {isPremium && <span className="text-2xl md:text-3xl animate-pulse">👑</span>}
+            <Icon name="Plane" className={isPremium ? 'text-yellow-500' : 'text-primary'} size={24} />
+            <span className={`text-lg md:text-2xl font-bold ${isPremium ? 'bg-gradient-to-r from-yellow-400 via-amber-500 to-yellow-400 bg-clip-text text-transparent' : 'text-foreground'}`}>Leviks Air</span>
             <span className="text-lg md:text-2xl">🎄</span>
           </div>
           <div className="flex items-center gap-3 md:gap-6 overflow-x-auto">
@@ -159,6 +175,13 @@ const Index = () => {
             >
               Личный кабинет
             </button>
+            <Button
+              size="sm"
+              onClick={() => setShowPremiumModal(true)}
+              className={isPremium ? 'bg-gradient-to-r from-yellow-400 via-amber-500 to-yellow-400 text-black hover:from-yellow-500 hover:via-amber-600 hover:to-yellow-500' : 'bg-primary text-primary-foreground'}
+            >
+              {isPremium ? '👑 Premium' : 'Premium'}
+            </Button>
             <SearchHeader onSearch={handleSearch} />
           </div>
         </div>
@@ -490,6 +513,74 @@ const Index = () => {
           </div>
         </div>
       </footer>
+
+      {showPremiumModal && (
+        <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-[100] flex items-center justify-center p-4">
+          <div className="bg-card border-2 border-yellow-500 rounded-2xl p-6 md:p-8 max-w-md w-full shadow-2xl">
+            <div className="text-center mb-6">
+              <span className="text-6xl mb-4 block animate-bounce">👑</span>
+              <h2 className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-yellow-400 via-amber-500 to-yellow-400 bg-clip-text text-transparent mb-2">
+                Premium подписка
+              </h2>
+              <p className="text-muted-foreground text-sm">
+                Эксклюзивные возможности для избранных
+              </p>
+            </div>
+            
+            <div className="space-y-3 mb-6">
+              <div className="flex items-center gap-3 text-sm">
+                <span className="text-xl">✨</span>
+                <span>Золотая тема оформления</span>
+              </div>
+              <div className="flex items-center gap-3 text-sm">
+                <span className="text-xl">💎</span>
+                <span>Алмазная тема чата</span>
+              </div>
+              <div className="flex items-center gap-3 text-sm">
+                <span className="text-xl">👑</span>
+                <span>Корона в верхнем углу</span>
+              </div>
+              <div className="flex items-center gap-3 text-sm">
+                <span className="text-xl">💬</span>
+                <span>Золотые сообщения боту</span>
+              </div>
+              <div className="flex items-center gap-3 text-sm">
+                <span className="text-xl">🎅</span>
+                <span>Деды Морозы вместо снеговиков</span>
+              </div>
+            </div>
+
+            <div className="mb-6">
+              <label className="block text-sm font-medium mb-2">Код активации</label>
+              <input
+                id="premium-code"
+                type="text"
+                placeholder="Введите код"
+                className="w-full px-4 py-3 bg-background border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500"
+              />
+            </div>
+
+            <div className="flex gap-3">
+              <Button
+                onClick={() => {
+                  const input = document.getElementById('premium-code') as HTMLInputElement;
+                  handlePremiumActivation(input.value);
+                }}
+                className="flex-1 bg-gradient-to-r from-yellow-400 via-amber-500 to-yellow-400 text-black hover:from-yellow-500 hover:via-amber-600 hover:to-yellow-500"
+              >
+                Активировать
+              </Button>
+              <Button
+                variant="outline"
+                onClick={() => setShowPremiumModal(false)}
+                className="flex-1"
+              >
+                Отмена
+              </Button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

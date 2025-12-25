@@ -3,6 +3,8 @@ import { useEffect, useState, useRef } from 'react';
 const NewYearMagic = () => {
   const [isActive, setIsActive] = useState(false);
   const [countdown, setCountdown] = useState('');
+  const [isPremium, setIsPremium] = useState(false);
+  const [snowmenUnlocked, setSnowmenUnlocked] = useState(false);
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
   useEffect(() => {
@@ -11,6 +13,12 @@ const NewYearMagic = () => {
     audio.volume = 0.3;
     audio.preload = 'none';
     audioRef.current = audio;
+
+    const premium = localStorage.getItem('isPremium') === 'true';
+    setIsPremium(premium);
+    
+    const unlocked = localStorage.getItem('snowmenUnlocked') === 'true';
+    setSnowmenUnlocked(unlocked);
 
     return () => {
       audio.pause();
@@ -93,9 +101,9 @@ const NewYearMagic = () => {
         <div className="firework firework-5"></div>
         <div className="firework firework-6"></div>
 
-        <div className="santa-fly santa-1 absolute text-6xl">🎅</div>
-        <div className="santa-fly santa-2 absolute text-5xl">🎅</div>
-        <div className="santa-fly santa-3 absolute text-7xl">🎅</div>
+        <div className="santa-fly santa-1 absolute text-6xl">{isPremium && snowmenUnlocked ? '🎅' : '☃️'}</div>
+        <div className="santa-fly santa-2 absolute text-5xl">{isPremium && snowmenUnlocked ? '🎅' : '☃️'}</div>
+        <div className="santa-fly santa-3 absolute text-7xl">{isPremium && snowmenUnlocked ? '🎅' : '☃️'}</div>
 
         <div className="gifts-fall gift-1 absolute text-4xl">🎁</div>
         <div className="gifts-fall gift-2 absolute text-3xl">🎁</div>
