@@ -177,7 +177,27 @@ const Index = () => {
           <div className="absolute top-1/4 left-1/4 w-48 h-48 md:w-96 md:h-96 bg-primary/10 rounded-full blur-3xl animate-pulse"></div>
           <div className="absolute bottom-1/4 right-1/4 w-48 h-48 md:w-96 md:h-96 bg-secondary/10 rounded-full blur-3xl delay-1000"></div>
         </div>
-        <div className="container mx-auto px-4 md:px-6 text-center relative z-10">
+        
+        <a
+          href="https://www.aeroflot.ru/ru-ru/afl_bonus"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="absolute top-[100px] md:top-[120px] left-1/2 -translate-x-1/2 z-20 w-[90%] max-w-5xl"
+        >
+          <div className="relative overflow-hidden rounded-lg md:rounded-2xl shadow-2xl group cursor-pointer">
+            <img
+              src="https://cdn.poehali.dev/projects/fa174cc1-5b97-4175-973a-f9bea28b014a/files/2bd6c9b6-6304-4746-91b0-6a13dfb362d3.jpg"
+              alt="Аэрофлот Бонус"
+              className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-500"
+            />
+            <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-secondary/20 group-hover:opacity-0 transition-opacity duration-300"></div>
+            <div className="absolute bottom-2 right-2 md:bottom-4 md:right-4 bg-primary text-primary-foreground px-3 py-1 md:px-4 md:py-2 rounded-full text-xs md:text-sm font-semibold">
+              Узнать больше →
+            </div>
+          </div>
+        </a>
+        
+        <div className="container mx-auto px-4 md:px-6 text-center relative z-10 mt-16 md:mt-24">
           <div
             className="inline-block mb-4 md:mb-6 cursor-pointer transition-transform hover:scale-110"
             onClick={() => {
