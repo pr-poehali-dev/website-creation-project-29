@@ -128,28 +128,28 @@ const Index = () => {
               Главная
             </button>
             <button
-              onClick={() => scrollToSection('booking')}
+              onClick={() => scrollToSection('services')}
               className={`text-xs md:text-sm font-medium transition-colors hover:text-primary whitespace-nowrap ${
-                activeSection === 'booking' ? 'text-primary' : 'text-muted-foreground'
+                activeSection === 'services' ? 'text-primary' : 'text-muted-foreground'
               }`}
             >
-              Билеты
+              Услуги
             </button>
             <button
-              onClick={() => scrollToSection('routes')}
+              onClick={() => scrollToSection('about')}
               className={`text-xs md:text-sm font-medium transition-colors hover:text-primary whitespace-nowrap hidden sm:block ${
-                activeSection === 'routes' ? 'text-primary' : 'text-muted-foreground'
+                activeSection === 'about' ? 'text-primary' : 'text-muted-foreground'
               }`}
             >
-              Маршруты
+              О компании
             </button>
             <button
-              onClick={() => scrollToSection('fleet')}
-              className={`text-xs md:text-sm font-medium transition-colors hover:text-primary whitespace-nowrap ${
-                activeSection === 'fleet' ? 'text-primary' : 'text-muted-foreground'
+              onClick={() => scrollToSection('help')}
+              className={`text-xs md:text-sm font-medium transition-colors hover:text-primary whitespace-nowrap hidden sm:block ${
+                activeSection === 'help' ? 'text-primary' : 'text-muted-foreground'
               }`}
             >
-              Флот
+              Помощь
             </button>
             <button
               onClick={() => scrollToSection('profile')}
@@ -199,42 +199,92 @@ const Index = () => {
           <div className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center px-4">
             <Button
               size="lg"
-              onClick={() => window.open('https://www.aeroflot.ru', '_blank')}
+              onClick={() => scrollToSection('services')}
               className="bg-primary text-primary-foreground hover:bg-primary/90 font-semibold w-full sm:w-auto"
             >
-              Купить билет
+              Забронировать билет
               <Icon name="ArrowRight" className="ml-2" size={20} />
             </Button>
             <Button
               size="lg"
               variant="outline"
-              onClick={() => scrollToSection('fleet')}
+              onClick={() => scrollToSection('about')}
               className="border-primary text-primary hover:bg-primary/10 w-full sm:w-auto"
             >
-              Наш флот
+              О компании
+            </Button>
+            <Button
+              size="lg"
+              variant="outline"
+              onClick={() => scrollToSection('profile')}
+              className="border-primary text-primary hover:bg-primary/10 w-full sm:w-auto"
+            >
+              Личный кабинет
             </Button>
           </div>
         </div>
       </section>
 
+      <section id="services" className="py-12 bg-muted/20">
+        <div className="container mx-auto px-6">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
+              Наши услуги
+            </h2>
+            <p className="text-muted-foreground text-lg">
+              Всё, что нужно для комфортного путешествия
+            </p>
+          </div>
+        </div>
+      </section>
+      
       <BookingSection />
+      <PriceCalculator />
       <FlightStatus />
       <ServicesSection />
       <RoutesSection />
       <RouteMap />
+      
+      <section id="about" className="py-12 bg-muted/20">
+        <div className="container mx-auto px-6">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
+              О Leviks Air
+            </h2>
+            <p className="text-muted-foreground text-lg">
+              Узнайте больше о нашей авиакомпании
+            </p>
+          </div>
+        </div>
+      </section>
+      
       <FleetSection />
+      <VirtualTour />
       <HistorySection />
+      <EcoInitiatives />
       <ReviewsSection />
       <VideoGallery />
-      <FAQSection />
-      <UserProfile />
       <Gamification />
-      <VirtualTour />
+      
+      <section id="help" className="py-12 bg-muted/20">
+        <div className="container mx-auto px-6">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
+              Помощь и поддержка
+            </h2>
+            <p className="text-muted-foreground text-lg">
+              Всегда готовы помочь вам
+            </p>
+          </div>
+        </div>
+      </section>
+      
       <TravelGuide />
-      <EcoInitiatives />
       <AirportMap />
-      <PriceCalculator />
+      <FAQSection />
       <SocialShare />
+      
+      <UserProfile />
 
       <SupportChat />
       {showSecretGame && <SecretGame onClose={() => setShowSecretGame(false)} onWin={handleGameWin} />}
