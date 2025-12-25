@@ -44,6 +44,36 @@
     --sidebar-ring: 140 60% 45%;
   }
 
+  .premium-theme {
+    --background: 45 100% 96%;
+    --foreground: 30 40% 10%;
+
+    --card: 45 90% 92%;
+    --card-foreground: 30 40% 10%;
+
+    --popover: 45 90% 92%;
+    --popover-foreground: 30 40% 10%;
+
+    --primary: 45 95% 50%;
+    --primary-foreground: 30 40% 10%;
+
+    --secondary: 38 92% 50%;
+    --secondary-foreground: 30 40% 10%;
+
+    --muted: 45 80% 85%;
+    --muted-foreground: 30 30% 35%;
+
+    --accent: 45 95% 50%;
+    --accent-foreground: 30 40% 10%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 45 100% 96%;
+
+    --border: 45 70% 70%;
+    --input: 45 70% 70%;
+    --ring: 45 95% 50%;
+  }
+
   .dark {
     --background: 220 25% 8%;
     --foreground: 210 40% 98%;

@@ -72,6 +72,14 @@ const Index = () => {
     toast.info(`Поиск: "${query}". Функция в разработке.`);
   };
 
+  useEffect(() => {
+    if (isPremium) {
+      document.documentElement.classList.add('premium-theme');
+    } else {
+      document.documentElement.classList.remove('premium-theme');
+    }
+  }, [isPremium]);
+
   return (
     <div className="min-h-screen bg-background">
 
@@ -80,7 +88,7 @@ const Index = () => {
       <NewYearMagic />
       <Snowfall />
       
-      <div className="fixed top-0 w-full z-[51] bg-gradient-to-r from-red-600 via-blue-600 to-red-600 py-2 md:py-2">
+      <div className={`fixed top-0 w-full z-[51] py-2 md:py-2 ${isPremium ? 'bg-gradient-to-r from-yellow-500 via-amber-500 to-yellow-500' : 'bg-gradient-to-r from-red-600 via-blue-600 to-red-600'}`}>
         <div className="container mx-auto px-3 md:px-6 flex items-center justify-center gap-2 md:gap-3 flex-wrap">
           <span className="text-white text-xs md:text-sm font-medium hidden sm:inline">🎄 Купить билеты:</span>
           <Button
@@ -233,12 +241,12 @@ const Index = () => {
               }
             }}
           >
-            <Icon name="Plane" className="text-primary" size={60} />
+            <Icon name="Plane" className={isPremium ? 'text-yellow-500' : 'text-primary'} size={60} />
           </div>
-          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-foreground mb-3 md:mb-4 bg-clip-text text-transparent bg-gradient-to-r from-primary via-secondary to-primary">
+          <h1 className={`text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-foreground mb-3 md:mb-4 bg-clip-text text-transparent ${isPremium ? 'bg-gradient-to-r from-yellow-400 via-amber-500 to-yellow-400' : 'bg-gradient-to-r from-primary via-secondary to-primary'}`}>
             Leviks Air 🎄
           </h1>
-          <p className="text-xl md:text-2xl font-semibold text-secondary mb-3 md:mb-4">С Новым Годом! 🎅</p>
+          <p className={`text-xl md:text-2xl font-semibold mb-3 md:mb-4 ${isPremium ? 'text-yellow-600 dark:text-yellow-400' : 'text-secondary'}`}>С Новым Годом! 🎅</p>
           <p className="text-base md:text-xl text-muted-foreground mb-4 max-w-2xl mx-auto px-4">
             Инновационная авиакомпания будущего. Технологии, комфорт и безопасность на высоте 10 000 метров.
           </p>
@@ -251,7 +259,7 @@ const Index = () => {
             <Button
               size="lg"
               onClick={() => scrollToSection('services')}
-              className="bg-primary text-primary-foreground hover:bg-primary/90 font-semibold w-full sm:w-auto"
+              className={isPremium ? 'bg-gradient-to-r from-yellow-400 via-amber-500 to-yellow-400 text-black hover:from-yellow-500 hover:via-amber-600 hover:to-yellow-500 font-semibold w-full sm:w-auto' : 'bg-primary text-primary-foreground hover:bg-primary/90 font-semibold w-full sm:w-auto'}
             >
               Забронировать билет
               <Icon name="ArrowRight" className="ml-2" size={20} />
@@ -260,7 +268,7 @@ const Index = () => {
               size="lg"
               variant="outline"
               onClick={() => scrollToSection('about')}
-              className="border-primary text-primary hover:bg-primary/10 w-full sm:w-auto"
+              className={isPremium ? 'border-yellow-500 text-yellow-600 hover:bg-yellow-500/10 w-full sm:w-auto' : 'border-primary text-primary hover:bg-primary/10 w-full sm:w-auto'}
             >
               О компании
             </Button>
